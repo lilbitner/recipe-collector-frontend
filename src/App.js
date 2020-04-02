@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
 import SignUp from './Components/SignUp'
+import {Route, Switch} from 'react-router-dom'
+import Login from './Components/Login'
 
 function App() {
   return (
     <div className="App">
-        <h1>Welcome to Recipe Collector</h1>
-        <SignUp />
-        {/* <img id='bookImage' src='https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' alt='books'/> */}
+      <Switch> 
+        <Route exact to='/' component={SignUp}/>
+        <Route to='/login' component={Login} />
+      </Switch>
+    
     </div>
   );
 }
