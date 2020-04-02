@@ -1,0 +1,25 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: auto;
+}
+
+.signupInput {
+    margin-bottom: 5%;
+    border: solid;
+    border-color: #0f4c81;
+}
+
+.signupSubmit {
+    border: solid;
+    border-color: #0f4c81;
+}
+
+h1{
+    text-align: center;
+}
+
+.signup {
+    background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1231&q=80');
+}
