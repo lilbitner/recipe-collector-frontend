@@ -1,13 +1,47 @@
 import React from 'react'
 
 export default class LoginForm extends React.Component {
+    
+    state = {
+        user: {
+            username: "",
+            password: ""
+        }
+    }
+
+    componentDidMount() {
+        localStorage.removeItem('token')
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        if(this.props.closeForm){ 
+        this.props.closeForm(false)}
+        this.props.login(this.state)
+            // .then(() => this.props.history.push('/home'))
+    }
+
+    handleChange = (event) => {
+        const {name, value} = event.target 
+        this.setState({
+            [name]: value
+        })
+    }
+    
+    
     render() {
         return(
-            <div className='inputContainer'> 
-                <input className='signupInput' type='text' name='Ssername' placeholder='Username' />
-                <input className='signupInput' type='text' name='Password' placeholder='Password'/>
+            <form onSubmit={this.handleSubmit} className='inputContainer'> 
+                <input type='text' className='signupInput' name='username'
+                    value={this.state.username} onChange={this.handleChange} 
+                    placeholder='Username' 
+                />
+                <input type='text' className='signupInput' type='password' name='password' 
+                    value={this.state.password} onChange={this.handleChange} 
+                    placeholder='Password'
+                />
                 <input className='signupSubmit' type='submit'/>
-            </div>
+            </form>
         )
     }
 }

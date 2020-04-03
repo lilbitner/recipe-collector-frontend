@@ -3,10 +3,12 @@
     flex-direction: column;
     width: 15%;
     margin: auto;
+    align-items: center;
 }
 
 .signupInput {
     margin-bottom: 5%;
+    width: 120%;
     border: solid;
     border-color: #0f4c81;
     font-family: 'Gotu', sans-serif;
@@ -16,6 +18,8 @@
     border: solid;
     border-color: #0f4c81;
     font-family: 'Gotu', sans-serif;
+    width: 100%;
+    /* margin-left: 15%; */
 }
 
 .signupSubmit:hover {
