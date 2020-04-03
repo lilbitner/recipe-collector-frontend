@@ -9,7 +9,7 @@ export default class Login extends React.Component {
                 <div className='signup'> 
                     <h1>Welcome to Recipe Collector</h1>
                     <h1>Login</h1>
-                    <LoginForm /> 
+                    <LoginForm {...this.props} login={this.props.login} /> 
                 </div>
             </div>
         )
