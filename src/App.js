@@ -5,11 +5,16 @@ import {Route, Switch, Redirect} from 'react-router-dom'
 import Login from './Components/Login'
 import PrivateRoute from './Components/PrivateRoute';
 import Home from './Components/Home'
+import RecipeBook from './Components/RecipeBook'
+import RecipeNotes from './Components/RecipeNotes'
+import AddToRecipeBook from './Components/AddToRecipeBook'
 
 class App extends React.Component {
   
   state= {
-    user: {}
+    user: {},
+    isUser: false,
+    isLoggedIn: false
   }
 
   createUser = (user) => {
@@ -19,14 +24,19 @@ class App extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({username: user.username, password: user.password})
-    }).then(response => response.json())
-    .then(() => this.props.history.push('/login'))
+    }).then(response => {
+      if (response.status === 201) 
+      {
+        this.setState({isUser: true})
+      } else {}
+    })
   }
+    
 
 
   // componentDidMount() {
   //   if(localStorage.token){
-  //     fetch('profile method in controller', {
+  //     fetch('http://localhost:5000/user', {
   //     method: "GET",
   //     headers: {
   //       'Authorization': `Bearer ${localStorage.token}`
@@ -44,10 +54,14 @@ class App extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({username: user.username, password: user.password})
-    }).then(response => response.json())
-    .then(result => {
-      localStorage.setItem('token', result.jwt)
-      this.setState({user: result.user})
+    })
+    .then(response => {
+      if(response.status === 200)
+      { 
+        localStorage.setItem('token', response.token)
+        // localStorage.setItem('userId', response.foundUser.id)
+        this.setState({user: response.foundUser, isLoggedIn: true})
+      }
     })
   }
 
@@ -57,16 +71,20 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch> 
-          <Route path='/signup' render={(props) => <SignUp {...props} createUser={this.createUser}/>}/> 
-          <Route path='/login' render={(props)=> <Login {...props} login={this.login} />}/>
+          <Route exact path='/signup' render={(props) => <SignUp {...props} isUser={this.state.isUser} createUser={this.createUser}/>}/> 
+          <Route exact path='/login' render={(props)=> <Login {...props} isLoggedIn={this.state.isLoggedIn} login={this.login} />}/>
           <PrivateRoute exact path='/' />
           <Route render={() => <Redirect to='/'/>}/>
-          <Route path='/home' render={(props) => <Home user={this.state.user} {...props}/>}/>
+          <Route exact path='/home' render={(props) => <Home user={this.state.user} {...props}/>}/>
+          <Route path='/recipebook' component={RecipeBook}/> 
+          <Route exact path='/recipenotes' component={RecipeNotes}/>
+          <Route exact path='/addtorecipebook' component={AddToRecipeBook}/> 
         </Switch>
       
       </div>
     );
   }
 }
+
 
 export default App;
