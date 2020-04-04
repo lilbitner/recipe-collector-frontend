@@ -3,10 +3,8 @@ import React from 'react'
 export default class LoginForm extends React.Component {
     
     state = {
-        user: {
-            username: "",
-            password: ""
-        }
+        username: "",
+        password: ""
     }
 
     componentDidMount() {
