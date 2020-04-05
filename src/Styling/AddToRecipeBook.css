@@ -1,0 +1,43 @@
+.uploadForm {
+    text-align: center;
+    border: solid;
+    border-color:#0f4c81 ;
+    box-shadow: 0px 0px 8px gray;
+    width: 40%;
+    margin-bottom: 30%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    margin-left: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}
+
+#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile, .upload{
+    margin-bottom: 5%;
+    width: 40%;
+    margin-left: 5%;
+    font-family: 'Gotu', sans-serif;
+}
+
+#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile {
+    border: solid;
+    border-color: #ffa372 ;
+    box-shadow: 0px 0px 8px gray;
+}
+
+#recipeSubmit:hover, #imageUpload:hover, #pickFile:hover {
+    box-shadow: 0px 8px 16px gray;
+}
+
+
+
+.upload {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+

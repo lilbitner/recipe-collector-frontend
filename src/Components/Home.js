@@ -1,7 +1,10 @@
 import React from 'react'
-import {Link, NavLink, Redirect} from 'react-router-dom'
+import {Link, NavLink, Redirect, Route, Switch} from 'react-router-dom'
 import Nav from './Nav'
 import '../Styling/Home.css'
+import RecipeBook from './RecipeBook'
+import AddToRecipeBook from './AddToRecipeBook'
+import RecipeNotes from './RecipeNotes'
 
 export default class Home extends React.Component{
     
@@ -28,7 +31,7 @@ export default class Home extends React.Component{
             {/* <h3>Tired of losing recipes in your great grandmothers handwriting?</h3>
             <h3>Want a digital collecition of your recipes?</h3> */}
             <div className='buttonContainer'> 
-                <button onClick={() => <Redirect to='/addtorecipebook'/>}id='uploadButton'>Add to your RecipeBook</button>
+                <button onClick={() => this.props.history.push('/home/add')} id='uploadButton'>Add to your RecipeBook</button>
                 <button id='viewButton'>View your RecipeBook</button>
                 <button id='notesButton'>RecipeNotes</button>
             </div>
@@ -37,8 +40,12 @@ export default class Home extends React.Component{
                 <img id='viewImage' src={this.state.image2}/>
                 <img id='notesImage' src={this.state.image3} />
             </div>
+            <Switch> 
+                <Route path='/book' component={RecipeBook}/> 
+                <Route path='/notes' component={RecipeNotes}/>
+                <Route path='/home/add' render={(props) => <AddToRecipeBook {...props} />}/> 
+            </Switch>
 
-            {/* <NavLink to='/login'>Logout</NavLink> */}
             </>
         )
     }
