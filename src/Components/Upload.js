@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import '../Styling/AddToRecipeBook.css'
 
 export default class Upload extends React.Component {
     
@@ -40,9 +41,11 @@ export default class Upload extends React.Component {
     render() {
         return(
             <div className="upload">
-                <input style={{display: 'none'}} type='file' name='image' onChange={this.onChange} ref={fileInput => this.fileInput = fileInput}/>
-                <button onClick={() => this.fileInput.click()}>Pick File</button>
-                <button onClick={this.fileUploadHandler}>Upload Image </button>
+                <input id='imageUpload' style={{display: 'none'}} type='file' name='image'
+                    onChange={this.onChange} ref={fileInput => this.fileInput = fileInput}
+                />
+                <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button>
+                <button id='imageUpload' onClick={this.fileUploadHandler}>Upload Image </button>
             </div>
         )
     }

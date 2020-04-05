@@ -71,14 +71,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch> 
-          <Route exact path='/signup' render={(props) => <SignUp {...props} isUser={this.state.isUser} createUser={this.createUser}/>}/> 
-          <Route exact path='/login' render={(props)=> <Login {...props} isLoggedIn={this.state.isLoggedIn} login={this.login} />}/>
-          <PrivateRoute exact path='/' />
+          <Route path='/signup' render={(props) => <SignUp {...props} 
+            isUser={this.state.isUser} createUser={this.createUser}/>}
+          /> 
+          <Route path='/login' render={(props)=> <Login {...props} 
+            isLoggedIn={this.state.isLoggedIn} login={this.login} />}
+          />
+          <PrivateRoute path='/' />
           <Route render={() => <Redirect to='/'/>}/>
-          <Route exact path='/home' render={(props) => <Home user={this.state.user} {...props}/>}/>
-          <Route path='/recipebook' component={RecipeBook}/> 
-          <Route exact path='/recipenotes' component={RecipeNotes}/>
-          <Route exact path='/addtorecipebook' component={AddToRecipeBook}/> 
+          <Route path='/home' render={(props) => <Home user={this.state.user} {...props}/>}/>
+          {/* <Route path='/book' component={RecipeBook}/> 
+          <Route path='/notes' component={RecipeNotes}/>
+          <Route exact path='/add' render={(props) => <AddToRecipeBook {...props} />}/>  */}
         </Switch>
       
       </div>
