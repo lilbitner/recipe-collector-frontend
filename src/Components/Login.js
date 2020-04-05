@@ -5,10 +5,10 @@ import {Redirect} from 'react-router-dom'
 
 export default class Login extends React.Component {
     
-    goToHome = () => {
-        if (this.props.isLoggedIn) 
-        {return <Redirect to='/home' />} 
-     }
+    // goToHome = () => {
+    //     if (this.props.isLoggedIn) 
+    //     {return <Redirect to='/' />} 
+    //  }
     
     
     render(){
@@ -18,7 +18,8 @@ export default class Login extends React.Component {
                     <h1>Welcome to Recipe Collector</h1>
                     <h1>Login</h1>
                     <LoginForm {...this.props} login={this.props.login} />
-                    {this.goToHome()} 
+                    {this.props.isLoggedIn? this.props.history.push('/') : null}
+                    {/* {this.goToHome()}  */}
                 </div>
             </div>
         )

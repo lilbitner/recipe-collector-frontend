@@ -5,10 +5,10 @@ import {Link, Redirect} from 'react-router-dom'
 
 export default class signUp extends React.Component{
     
-    goToLogin = () => {
-       if (this.props.isUser) 
-       {return <Redirect to='/login' />} 
-    }
+    // goToLogin = () => {
+    //    if (this.props.isUser === true) 
+    //    {return this.props.history.push('/login')} 
+    // }
     
     render() {
         return(
@@ -18,7 +18,8 @@ export default class signUp extends React.Component{
                     <h1>Sign-up</h1>
                     <LoginForm {...this.props} login={this.props.createUser}/> 
                     <Link to='/login' id='loginLink'>Already have an account? Login here</Link>
-                    {this.goToLogin()}
+                    {this.props.isUser? <h2>Welcome! Please Login!</h2> : null}
+                    {/* {this.goToLogin()} */}
                 </div>
             </div>
         )

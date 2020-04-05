@@ -16,7 +16,7 @@ export default class LoginForm extends React.Component {
         if(this.props.closeForm){ 
         this.props.closeForm(false)}
         this.props.login(this.state)
-            // .then(() => this.props.history.push('/home'))
+            // .then(() => this.props.history.push('/'))
     }
 
     handleChange = (event) => {
