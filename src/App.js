@@ -27,6 +27,7 @@ class App extends React.Component {
     }).then(response => {
       if (response.status === 201) 
       {
+        // localStorage.setItem('userId', response.id)
         this.setState({isUser: true})
       } else {}
     })
@@ -48,20 +49,22 @@ class App extends React.Component {
   // }
 
   login = (user) => {
-    fetch("http://localhost:5000/login", {
+   fetch("http://localhost:5000/login", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({username: user.username, password: user.password})
-    })
+    }).then(response => response.json())
     .then(response => {
-      if(response.status === 200)
-      { 
+      // if(response.status === 200)
+      // { 
+        // this.setState({user: response.foundUser, isLoggedIn: true})
         localStorage.setItem('token', response.token)
+        this.setState({isLoggedIn: true})
         // localStorage.setItem('userId', response.foundUser.id)
-        this.setState({user: response.foundUser, isLoggedIn: true})
-      }
+        // this.setState({user: response.foundUser, isLoggedIn: true})
+      // } else {}
     })
   }
 
@@ -71,15 +74,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch> 
+          <PrivateRoute exact path='/' />
           <Route path='/signup' render={(props) => <SignUp {...props} 
             isUser={this.state.isUser} createUser={this.createUser}/>}
           /> 
           <Route path='/login' render={(props)=> <Login {...props} 
             isLoggedIn={this.state.isLoggedIn} login={this.login} />}
           />
-          <PrivateRoute path='/' />
-          <Route render={() => <Redirect to='/'/>}/>
-          <Route path='/home' render={(props) => <Home user={this.state.user} {...props}/>}/>
+          {/* <PrivateRoute path='/home' /> */}
+          <Route render={() => <Redirect to='/signup'/>}/>
+          <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/>
           {/* <Route path='/book' component={RecipeBook}/> 
           <Route path='/notes' component={RecipeNotes}/>
           <Route exact path='/add' render={(props) => <AddToRecipeBook {...props} />}/>  */}
