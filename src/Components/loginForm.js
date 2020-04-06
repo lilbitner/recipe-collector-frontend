@@ -9,6 +9,7 @@ export default class LoginForm extends React.Component {
 
     componentDidMount() {
         localStorage.removeItem('token')
+        localStorage.removeItem('user_id')
     }
 
     handleSubmit = (event) => {

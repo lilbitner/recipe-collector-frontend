@@ -12,9 +12,11 @@ import AddToRecipeBook from './Components/AddToRecipeBook'
 class App extends React.Component {
   
   state= {
-    user: {},
+    user: [],
     isUser: false,
-    isLoggedIn: false
+    isCreatedUser: false,
+    isLoggedIn: false,
+    isCorrectUser: true
   }
 
   createUser = (user) => {
@@ -29,7 +31,7 @@ class App extends React.Component {
       {
         // localStorage.setItem('userId', response.id)
         this.setState({isUser: true})
-      } else {}
+      } else {this.setState({isCreatedUser: true})}
     })
   }
     
@@ -55,16 +57,43 @@ class App extends React.Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({username: user.username, password: user.password})
-    }).then(response => response.json())
+    })
+    // .then(response => {
+    //   if(response.status == 401)
+    //   { this.setState({isCorrectUser: false}) }
+    // })
+    .then(response => response.json())
     .then(response => {
-      // if(response.status === 200)
-      // { 
-        // this.setState({user: response.foundUser, isLoggedIn: true})
-        localStorage.setItem('token', response.token)
-        this.setState({isLoggedIn: true})
-        // localStorage.setItem('userId', response.foundUser.id)
-        // this.setState({user: response.foundUser, isLoggedIn: true})
-      // } else {}
+      if(response.status == 401)
+      { this.setState({isCorrectUser: false}) }
+     else {
+      localStorage.setItem('token', response.token)
+      localStorage.setItem('user_id', response.foundUser.id)
+      this.setState({isLoggedIn: true, user: response.foundUser})}
+     })
+    
+    
+  
+
+    // .then(response => {
+    //   if(response.status == 401)
+    //   { this.setState({isCorrectUser: false}) } else {
+    //     // this.setState({user: response.foundUser, isLoggedIn: true})
+    //     localStorage.setItem('token', response.token)
+    //     this.setState({isLoggedIn: true})}
+    //     // localStorage.setItem('userId', response.foundUser.id)
+    //     // this.setState({user: response.foundUser, isLoggedIn: true})
+    //   // } else {}
+    // })
+  }
+
+  addRecipe = (recipe) => {
+    fetch('http://localhost:5000/recipes', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({title: recipe.title, category: recipe.category, image: recipe.image, user_id: recipe.user_id})
     })
   }
 
@@ -75,12 +104,15 @@ class App extends React.Component {
       <div className="App">
         <Switch> 
           <PrivateRoute exact user={this.state.user} path='/' />
+          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/signup' render={(props) => <SignUp {...props} 
-            isUser={this.state.isUser} createUser={this.createUser}/>}
+            isUser={this.state.isUser} isCreatedUser={this.state.isCreatedUser} createUser={this.createUser}/>}
           /> 
+          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/login' render={(props)=> <Login {...props} 
-            isLoggedIn={this.state.isLoggedIn} login={this.login} />}
+            isLoggedIn={this.state.isLoggedIn} isCorrectUser={this.state.isCorrectUser} login={this.login} />}
           />
+          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
           <Route path='/book' render={(props) => <RecipeBook {...props} />}/>  
           <Route path='/notes' render={(props) => <RecipeNotes {...props} />}/>  

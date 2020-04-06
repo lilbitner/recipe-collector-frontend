@@ -10,14 +10,29 @@ export default class AddToRecipeBook extends React.Component {
         category: '',
         image: ''
     }
-    
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        if(this.props.closeForm){ 
+        this.props.closeForm(false)}
+        this.props.login(this.state)
+            // .then(() => this.props.history.push('/'))
+    }
+
+    handleChange = (event) => {
+        const {name, value} = event.target 
+        this.setState({
+            [name]: value
+        })
+    }
     
     render() {
         return(
             <>
             <Nav />
             <h1>AddToRecipeBook</h1>
-            <form className='uploadForm'> 
+            <form className='uploadForm' onSubmit={this.handleSubmit}> 
+            <Upload />
                 <input id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
                 <select id='recipeCategory' type='text' name='title' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>
@@ -28,7 +43,6 @@ export default class AddToRecipeBook extends React.Component {
                     <option value='Breakfast'>Breakfast</option>
                     <option value='Other'>Other</option>
                 </select>
-                <Upload />
                 <input id='recipeSubmit' type='submit' />
             </form>
             </>

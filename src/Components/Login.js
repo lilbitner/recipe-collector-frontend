@@ -19,6 +19,7 @@ export default class Login extends React.Component {
                     <h1>Login</h1>
                     <LoginForm {...this.props} login={this.props.login} />
                     {this.props.isLoggedIn? this.props.history.push('/') : null}
+                    {!this.props.isCorrectUser? <h2>Incorrect user credentials, please try again</h2>: null}
                     {/* {this.goToHome()}  */}
                 </div>
             </div>
