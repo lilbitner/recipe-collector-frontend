@@ -47,6 +47,7 @@ export default class Upload extends React.Component {
                 <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button>
                 <button id='imageUpload' onClick={this.fileUploadHandler}>Upload Image </button>
             </div>
+
         )
     }
 }

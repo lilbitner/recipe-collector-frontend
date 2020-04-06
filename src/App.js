@@ -49,7 +49,7 @@ class App extends React.Component {
   // }
 
   login = (user) => {
-   fetch("http://localhost:5000/login", {
+   fetch("http://localhost:5000/users/login", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -74,19 +74,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch> 
-          <PrivateRoute exact path='/' />
+          <PrivateRoute exact user={this.state.user} path='/' />
           <Route path='/signup' render={(props) => <SignUp {...props} 
             isUser={this.state.isUser} createUser={this.createUser}/>}
           /> 
           <Route path='/login' render={(props)=> <Login {...props} 
             isLoggedIn={this.state.isLoggedIn} login={this.login} />}
           />
-          {/* <PrivateRoute path='/home' /> */}
+          {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
+          <Route path='/book' render={(props) => <RecipeBook {...props} />}/>  
+          <Route path='/notes' render={(props) => <RecipeNotes {...props} />}/>  
+          <Route path='/add' render={(props) => <AddToRecipeBook {...props} />}/>  
           <Route render={() => <Redirect to='/signup'/>}/>
-          <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/>
-          {/* <Route path='/book' component={RecipeBook}/> 
-          <Route path='/notes' component={RecipeNotes}/>
-          <Route exact path='/add' render={(props) => <AddToRecipeBook {...props} />}/>  */}
         </Switch>
       
       </div>
