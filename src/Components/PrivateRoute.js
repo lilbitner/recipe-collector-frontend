@@ -6,8 +6,8 @@ import RecipeBook from './RecipeBook'
 import RecipeNotes from './RecipeNotes'
 
 export default function PrivateRoute(props) {
-    return <Route render = {(routerProps) => {
-        return localStorage.token ? <Home {...routerProps} />  
+    return <Route {...props} render = {(routerProps) => {
+        return localStorage.token ? <Home user={props.user} {...routerProps} />  
         : <Redirect to='/signup'/>
     }} />
 }

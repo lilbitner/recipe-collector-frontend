@@ -1,9 +1,13 @@
 import React from 'react'
+import Nav from './Nav'
 
 export default class RecipeNotes extends React.Component {
     render() {
         return(
-            <h1></h1>
+            <>
+            <Nav/>
+            <h1>RecipeNotes</h1>
+            </>
         )
     }
 }
