@@ -14,14 +14,18 @@ export default class Upload extends React.Component {
         this.setState({image: event.target.files[0]})
     }
 
-    fileUploadHandler = () => {
-        const fd = new FormData();
-        fd.append('image', this.state.image, this.state.image.name)
+    // fileUploadHandler = () => {
+    //     const fd = new FormData();
+    //     fd.append('image', this.state.image, this.state.image.name)
 
-        axios.post('', fd, {
-            onUploadProgress: progressEvent => 
-            console.log('Upload Progress', Math.round(progressEvent.loaded / progressEvent.total * 100) + '%') 
-        })
+    //     axios.post('', fd, {
+    //         onUploadProgress: progressEvent => 
+    //         console.log('Upload Progress', Math.round(progressEvent.loaded / progressEvent.total * 100) + '%') 
+    //     })
+    // }
+
+    handleImage = () => {
+        this.props.addImage(this.state.image)
     }
 
     
@@ -41,12 +45,14 @@ export default class Upload extends React.Component {
     render() {
         return(
             <div className="upload">
-                <input id='imageUpload' style={{display: 'none'}} type='file' name='image'
-                    onChange={this.onChange} ref={fileInput => this.fileInput = fileInput}
+                <input id='imageUpload' type='file' name='image'
+                     onSubmit={this.fileSelectedHandler}
                 />
-                <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button>
-                <button id='imageUpload' onClick={this.fileUploadHandler}>Upload Image </button>
+                {/* <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button> */}
+                <button id='imageUpload' onClick={this.fileSelectedHandler}>Upload Image </button>
             </div>
+            // ref={fileInput => this.fileInput = fileInput}
+            // style={{display: 'none'}}
 
         )
     }

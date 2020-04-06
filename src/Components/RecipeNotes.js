@@ -5,7 +5,7 @@ export default class RecipeNotes extends React.Component {
     render() {
         return(
             <>
-            <Nav/>
+            <Nav user={this.props.user}/>
             <h1>RecipeNotes</h1>
             </>
         )

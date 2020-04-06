@@ -37,18 +37,18 @@ class App extends React.Component {
     
 
 
-  // componentDidMount() {
-  //   if(localStorage.token){
-  //     fetch('http://localhost:5000/user', {
-  //     method: "GET",
-  //     headers: {
-  //       'Authorization': `Bearer ${localStorage.token}`
-  //     }
-  //     })
-  //     .then(response => response.json())
-  //     .then(result => this.setState({user: result.user}))
-  //   }
-  // }
+  componentDidMount() {
+    if(localStorage.token){
+      fetch(`http://localhost:5000/users/authenticate`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+      })
+      .then(response => response.json())
+      .then(result => this.setState({user: result.user}))
+    }
+  }
 
   login = (user) => {
    fetch("http://localhost:5000/users/login", {
@@ -114,9 +114,9 @@ class App extends React.Component {
           />
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
-          <Route path='/book' render={(props) => <RecipeBook {...props} />}/>  
-          <Route path='/notes' render={(props) => <RecipeNotes {...props} />}/>  
-          <Route path='/add' render={(props) => <AddToRecipeBook {...props} />}/>  
+          <Route path='/book' render={(props) => <RecipeBook user={this.state.user} {...props} />}/>  
+          <Route path='/notes' render={(props) => <RecipeNotes user={this.state.user} {...props} />}/>  
+          <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} user={this.state.user} {...props} />}/>  
           <Route render={() => <Redirect to='/signup'/>}/>
         </Switch>
       
