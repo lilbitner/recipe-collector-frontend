@@ -26,7 +26,7 @@ export default class Home extends React.Component{
     render() {
         return(
             <>
-            <Nav />
+            <Nav user={this.props.user} />
             {/* <h1> {this.props.user.username ? `Welcome to Recipe Collector ${this.props.user.username}`: null}</h1> */}
             {/* <h3>Tired of losing recipes in your great grandmothers handwriting?</h3>
             <h3>Want a digital collecition of your recipes?</h3> */}
@@ -40,12 +40,6 @@ export default class Home extends React.Component{
                 <img id='viewImage' src={this.state.image2}/>
                 <img id='notesImage' src={this.state.image3} />
             </div>
-            {/* <Switch> 
-                <Route path='/book' component={RecipeBook}/> 
-                <Route path='/notes' component={RecipeNotes}/>
-                <Route path='/add' render={(props) => <AddToRecipeBook {...props} />}/> 
-            </Switch> */}
-
             </>
         )
     }
