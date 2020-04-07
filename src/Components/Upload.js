@@ -5,13 +5,15 @@ import '../Styling/AddToRecipeBook.css'
 export default class Upload extends React.Component {
     
     state = {
-        image: ''
+        image: {}
     }
 
     fileSelectedHandler = (event) => {
         console.log(event)
         console.log(event.target.files[0])
-        this.setState({image: event.target.files[0]})
+        this.setState({
+            image: event.target.files[0]
+        })
     }
 
     // fileUploadHandler = () => {
@@ -24,7 +26,8 @@ export default class Upload extends React.Component {
     //     })
     // }
 
-    handleImage = () => {
+    handleImage = (event) => {
+        event.preventDefault()
         this.props.addImage(this.state.image)
     }
 
@@ -46,10 +49,10 @@ export default class Upload extends React.Component {
         return(
             <div className="upload">
                 <input id='imageUpload' type='file' name='image'
-                     onSubmit={this.fileSelectedHandler}
+                     onChange={this.fileSelectedHandler}
                 />
                 {/* <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button> */}
-                <button id='imageUpload' onClick={this.fileSelectedHandler}>Upload Image </button>
+                <button id='imageUpload' onClick={this.handleImage}>Upload Image </button>
             </div>
             // ref={fileInput => this.fileInput = fileInput}
             // style={{display: 'none'}}
