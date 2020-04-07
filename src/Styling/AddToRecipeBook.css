@@ -1,4 +1,4 @@
-.uploadForm {
+/* .uploadForm {
     text-align: center;
     border: solid;
     border-color:#0f4c81 ;
@@ -14,7 +14,7 @@
     align-items: center;
     
 
-}
+} */
 
 #recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile, .upload{
     margin-bottom: 5%;

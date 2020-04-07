@@ -8,8 +8,8 @@ export default class AddToRecipeBook extends React.Component {
     state= {
         title: '',
         category: '',
-        image: '',
-        user_id: `${this.props.user.id}`
+        image: {},
+        user_id: `${localStorage.user_id}`
     }
 
     handleSubmit = (event) => {
@@ -37,8 +37,8 @@ export default class AddToRecipeBook extends React.Component {
             <h1>AddToRecipeBook</h1>
             <form className='uploadForm' onSubmit={this.handleSubmit}> 
             <Upload addImage={this.addImage} />
-                <input id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
-                <select id='recipeCategory' type='text' name='title' > 
+                <input onChange={this.handleChange} id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
+                <select onChange={this.handleChange} id='recipeCategory' type='text' name='category' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>
                     <option value='Appetizer'>Appetizer</option>
                     <option value='Entreé'>Entreé</option>
