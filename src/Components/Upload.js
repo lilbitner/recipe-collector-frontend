@@ -66,13 +66,15 @@ export default class Upload extends React.Component {
     
     render() {
         return(
+            <>
             <div className="upload">
-                <input id='imageUpload' type='file' name='image'
+                <input id='pickFile' type='file' name='image'
                      onChange={this.fileSelectedHandler}
                 />
                 <button id='imageUpload' onClick={this.handleUpload}>Upload Image </button>
-                {/* <img src={this.state.url || 'http://via.placeholder.com/200x200'} alt='image' /> */}
             </div>
+            {this.state.isUrl ? <h3 id='recipeSubmittedMessage'>Image Uploaded!</h3> : null}
+            </>
 
         )
     }
