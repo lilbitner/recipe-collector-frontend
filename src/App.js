@@ -88,12 +88,14 @@ class App extends React.Component {
   }
 
   addRecipe = (recipe) => {
+    console.log('recipe', recipe)
+    
     fetch('http://localhost:5000/recipes', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({title: recipe.title, category: recipe.category, image: recipe.image, user_id: parseInt(recipe.user_id)})
+      body: JSON.stringify({title: recipe.title, category: recipe.category, image: recipe.image, user_id: recipe.user_id})
     })
   }
 
