@@ -16,7 +16,8 @@ class App extends React.Component {
     isUser: false,
     isCreatedUser: false,
     isLoggedIn: false,
-    isCorrectUser: true
+    isCorrectUser: true,
+    isRecipeCreated: false,
   }
 
   createUser = (user) => {
@@ -97,8 +98,12 @@ class App extends React.Component {
       },
       body: JSON.stringify({title: recipe.title, category: recipe.category, image: recipe.image, user_id: recipe.user_id})
     })
+    .then(response => {
+      if (response.status == 201){
+        this.setState({isRecipeCreated: true})
+      }
+    })
   }
-
 
   render() {
 
@@ -118,7 +123,9 @@ class App extends React.Component {
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
           <Route path='/book' render={(props) => <RecipeBook user={this.state.user} {...props} />}/>  
           <Route path='/notes' render={(props) => <RecipeNotes user={this.state.user} {...props} />}/>  
-          <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} user={this.state.user} {...props} />}/>  
+          <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} 
+            user={this.state.user} isRecipeCreated={this.state.isRecipeCreated} {...props} />}
+          />  
           <Route render={() => <Redirect to='/signup'/>}/>
         </Switch>
       
