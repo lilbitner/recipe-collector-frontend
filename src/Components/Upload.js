@@ -1,11 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import '../Styling/AddToRecipeBook.css'
+import {storage} from '../Firebase/index'
 
 export default class Upload extends React.Component {
     
     state = {
-        image: {}
+        image: {},
+        url: '',
+        isUrl: false
     }
 
     fileSelectedHandler = (event) => {
@@ -26,24 +29,40 @@ export default class Upload extends React.Component {
     //     })
     // }
 
-    handleImage = (event) => {
-        event.preventDefault()
-        this.props.addImage(this.state.image)
+
+    handleUpload = () => {
+        const {image} = this.state
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+           "state_changed",
+           snapshot => {},
+           error => {
+               console.log(error);
+           },
+           () => {
+               storage
+               .ref("images")
+               .child(image.name)
+               .getDownloadURL()
+               .then(url => {
+                   this.setState({url: url, isUrl: true})
+                   this.props.addImage(this.state.url)
+               })
+            //    .then(this.props.addImage(this.state.url))
+          }
+        )
+        
     }
 
-    
-    // onChange = (event) => {
-    //     const files = event.target.files
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(files[0]);
-    //     reader.onload=(event) => {
-    //         const url = "recipe post URL"
-    //         const formData={file: event.target.result}
-    //         return post(url, formData)
-    //         .then(response => console.log("result", response))
-    //     }
-
+    // handleImage = (event) => {
+    //     event.preventDefault()
+    //     this.props.addImage(this.state.url)
     // }
+
+  
+
+
+    
     
     render() {
         return(
@@ -51,11 +70,9 @@ export default class Upload extends React.Component {
                 <input id='imageUpload' type='file' name='image'
                      onChange={this.fileSelectedHandler}
                 />
-                {/* <button id='pickFile' onClick={() => this.fileInput.click()}>Pick File</button> */}
-                <button id='imageUpload' onClick={this.handleImage}>Upload Image </button>
+                <button id='imageUpload' onClick={this.handleUpload}>Upload Image </button>
+                {/* <img src={this.state.url || 'http://via.placeholder.com/200x200'} alt='image' /> */}
             </div>
-            // ref={fileInput => this.fileInput = fileInput}
-            // style={{display: 'none'}}
 
         )
     }

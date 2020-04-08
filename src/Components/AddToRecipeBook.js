@@ -8,15 +8,13 @@ export default class AddToRecipeBook extends React.Component {
     state= {
         title: '',
         category: '',
-        image: {},
+        image: '',
         user_id: `${localStorage.user_id}`
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        if(this.props.closeForm){ 
-        this.props.closeForm(false)}
-        this.props.addRecipe(this.state)
+    addImage = (url) => {
+        console.log(url)
+        this.setState({image: url})
     }
 
     handleChange = (event) => {
@@ -26,17 +24,25 @@ export default class AddToRecipeBook extends React.Component {
         })
     }
 
-    addImage = (newImage) => {
-        this.setState({image: newImage})
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(event.target)
+        if(this.props.closeForm){ 
+        this.props.closeForm(false)}
+        this.props.addRecipe(this.state)
     }
+
+
+
     
     render() {
         return(
             <>
             <Nav user={this.props.user} />
             <h1>AddToRecipeBook</h1>
-            <form className='uploadForm' onSubmit={this.handleSubmit}> 
+            {/* <form  className='uploadForm' onSubmit={this.handleSubmit}>  */}
             <Upload addImage={this.addImage} />
+            <form  className='uploadForm' onSubmit={this.handleSubmit}> 
                 <input onChange={this.handleChange} id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
                 <select onChange={this.handleChange} id='recipeCategory' type='text' name='category' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>

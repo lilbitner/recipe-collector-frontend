@@ -40,5 +40,28 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAvMEWhqN5QR5E27gXK_KzOcLoqXLjmjNE",
+    authDomain: "recipe-collector-7c18c.firebaseapp.com",
+    databaseURL: "https://recipe-collector-7c18c.firebaseio.com",
+    projectId: "recipe-collector-7c18c",
+    storageBucket: "recipe-collector-7c18c.appspot.com",
+    messagingSenderId: "583426136012",
+    appId: "1:583426136012:web:9a1a1ae98f57fd8e3aaf69",
+    measurementId: "G-HDWBR0C9RM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   </body>
 </html>
