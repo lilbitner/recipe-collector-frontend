@@ -30,6 +30,12 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color:#DCDCDC;
+    opacity: .8;
+}
+
+.allUploadInputs:hover {
+    box-shadow: 0px 8px 16px gray;
 }
 
 #recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, .upload{
@@ -42,7 +48,9 @@
 #pickFile {
     height: 100%;
     font-family: 'Gotu', sans-serif;
+    background-color: white;
 }
+
 
 #recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile {
     border: solid;
@@ -61,6 +69,7 @@
     justify-content: space-between;
     text-align: center;
     align-items: center;
+    align-content: center;
 }
 
 #recipeSubmittedMessage {

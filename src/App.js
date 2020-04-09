@@ -18,7 +18,7 @@ class App extends React.Component {
     isLoggedIn: false,
     isCorrectUser: true,
     isRecipeCreated: false,
-    recipeObject: []
+    recipes: []
   }
 
   createUser = (user) => {
@@ -50,7 +50,12 @@ class App extends React.Component {
       .then(response => response.json())
       .then(result => this.setState({user: result.user}))
     }
-    
+
+    fetch(`http://localhost:5000/recipes/${localStorage.user_id}`)
+        .then(response => response.json())
+        .then(recipesObject => {
+            this.setState({recipes: recipesObject.recipes})
+        })
   }
 
   login = (user) => {
@@ -108,6 +113,7 @@ class App extends React.Component {
   }
 
 
+
   render() {
 
     return (
@@ -124,7 +130,9 @@ class App extends React.Component {
           />
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
-          <Route path='/book' render={(props) => <RecipeBook  user={this.state.user} {...props} />}/>  
+          <Route path='/book' render={(props) => <RecipeBook recipes={this.state.recipes} 
+            user={this.state.user} {...props} />}
+          />  
           <Route path='/notes' render={(props) => <RecipeNotes user={this.state.user} {...props} />}/>  
           <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} 
             user={this.state.user} isRecipeCreated={this.state.isRecipeCreated} {...props} />}
