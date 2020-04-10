@@ -92,3 +92,9 @@
 #refreshButton:hover {
     box-shadow: 0px 8px 16px gray;
 }
+
+#loadingImage {
+    height: 20vh;
+    width: 8vw;
+    margin-bottom: 3%;
+}

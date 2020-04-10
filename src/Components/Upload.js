@@ -8,7 +8,8 @@ export default class Upload extends React.Component {
     state = {
         image: {},
         url: '',
-        isUrl: false
+        isUrl: false,
+        isLoaded: true
     }
 
     fileSelectedHandler = (event) => {
@@ -19,19 +20,10 @@ export default class Upload extends React.Component {
         })
     }
 
-    // fileUploadHandler = () => {
-    //     const fd = new FormData();
-    //     fd.append('image', this.state.image, this.state.image.name)
-
-    //     axios.post('', fd, {
-    //         onUploadProgress: progressEvent => 
-    //         console.log('Upload Progress', Math.round(progressEvent.loaded / progressEvent.total * 100) + '%') 
-    //     })
-    // }
-
 
     handleUpload = () => {
         const {image} = this.state
+        this.setState({isLoaded: false})
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
            "state_changed",
@@ -45,24 +37,14 @@ export default class Upload extends React.Component {
                .child(image.name)
                .getDownloadURL()
                .then(url => {
-                   this.setState({url: url, isUrl: true})
+                   this.setState({url: url, isUrl: true, isLoaded: true})
                    this.props.addImage(this.state.url)
                })
-            //    .then(this.props.addImage(this.state.url))
           }
         )
         
     }
 
-    // handleImage = (event) => {
-    //     event.preventDefault()
-    //     this.props.addImage(this.state.url)
-    // }
-
-  
-
-
-    
     
     render() {
         return(
@@ -73,6 +55,7 @@ export default class Upload extends React.Component {
                 />
                 <button id='imageUpload' onClick={this.handleUpload}>Upload Image </button>
             </div>
+            {!this.state.isLoaded ? <img id='loadingImage' src='https://cdn.lowgif.com/small/d35d94c490e598e3-loading-gif-transparent-loading-gif.gif' alt='File is Loading!' /> : null}
             {this.state.isUrl ? <h3 id='recipeSubmittedMessage'>Image Uploaded!</h3> : null}
             </>
 
