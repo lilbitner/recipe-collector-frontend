@@ -46,18 +46,25 @@ export default class AddToRecipeBook extends React.Component {
             <h1>AddToRecipeBook</h1>
             {/* <form  className='uploadForm' onSubmit={this.handleSubmit}>  */}
             <div className='allUploadInputs'> 
+            <h3 id='pickWhatYouWant'> Pick and choose what you would like to add</h3>
             <Upload addImage={this.addImage} />
             <form  className='uploadForm' onSubmit={this.handleSubmit}> 
                 <input onChange={this.handleChange} id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
+                <textarea id='recipeDescription' rows='10' cols='10' wrap='soft' placeholder='Recipe Description'></textarea>
                 <select onChange={this.handleChange} id='recipeCategory' type='text' name='category' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>
                     <option value='Appetizer'>Appetizer</option>
+                    {/* casserole, soups&stews, veggies, salads, sides, sauces, dessert pie, cookies/brownies, cakes/breads/rolls, 
+                    thanksgiving, xmas, brunch  */}
                     <option value='Entreé'>Entreé</option>
                     <option value='Dessert'>Dessert</option>
-                    <option value='Drink'>Drink</option>
+                    <option value='Sides'>Sides</option>
+                    <option value='Holiday'>Holiday</option>
+                    <option value='Drink'>Drinks</option>
                     <option value='Breakfast'>Breakfast</option>
                     <option value='Other'>Other</option>
                 </select>
+                <input id='recipeUrl' name='recipeUrl' placeholder='External Recipe Url'/>
                 <input id='recipeSubmit' type='submit' />
             </form>
             {this.props.isRecipeCreated ? 
