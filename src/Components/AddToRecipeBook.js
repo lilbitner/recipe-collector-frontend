@@ -8,7 +8,9 @@ export default class AddToRecipeBook extends React.Component {
     state= {
         title: '',
         category: '',
+        description: '',
         image: '',
+        url: '',
         user_id: `${localStorage.user_id}`
     }
 
@@ -50,21 +52,22 @@ export default class AddToRecipeBook extends React.Component {
             <Upload addImage={this.addImage} />
             <form  className='uploadForm' onSubmit={this.handleSubmit}> 
                 <input onChange={this.handleChange} id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
-                <textarea id='recipeDescription' rows='10' cols='10' wrap='soft' placeholder='Recipe Description'></textarea>
+                <textarea onChange={this.handleChange} id='recipeDescription' rows='10' cols='10' wrap='soft' name='description'
+                    placeholder='Recipe Description'>
+                </textarea>
                 <select onChange={this.handleChange} id='recipeCategory' type='text' name='category' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>
                     <option value='Appetizer'>Appetizer</option>
-                    {/* casserole, soups&stews, veggies, salads, sides, sauces, dessert pie, cookies/brownies, cakes/breads/rolls, 
-                    thanksgiving, xmas, brunch  */}
                     <option value='Entreé'>Entreé</option>
                     <option value='Dessert'>Dessert</option>
-                    <option value='Sides'>Sides</option>
+                    <option value='Sides'>Side</option>
+                    <option value='Salads'>Salad</option>
                     <option value='Holiday'>Holiday</option>
-                    <option value='Drink'>Drinks</option>
-                    <option value='Breakfast'>Breakfast</option>
-                    <option value='Other'>Other</option>
+                    <option value='Beverage'>Beverage</option>
+                    <option value='Brunch'>Brunch</option>
+                    <option value='Miscellaneous'>Miscellaneous</option>
                 </select>
-                <input id='recipeUrl' name='recipeUrl' placeholder='External Recipe Url'/>
+                <input onChange={this.handleChange} id='recipeUrl'  name='url' placeholder='External Recipe Url'/>
                 <input id='recipeSubmit' type='submit' />
             </form>
             {this.props.isRecipeCreated ? 
