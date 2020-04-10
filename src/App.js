@@ -103,7 +103,7 @@ class App extends React.Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({title: recipe.title, category: recipe.category, image: recipe.image, user_id: recipe.user_id})
+      body: JSON.stringify({title: recipe.title, category: recipe.category, description: recipe.description, url: recipe.url, image: recipe.image, user_id: recipe.user_id})
     })
     .then(response => {
       if (response.status == 201){
