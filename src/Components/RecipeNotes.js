@@ -26,9 +26,11 @@ export default class RecipeNotes extends React.Component {
                 <h4>Notes</h4>
                 <div class="lines"></div>
                 <ul id="List">
+                    {/* <input placeholder='Notes Title' />
                     <textarea className='textArea' name='input1' />
-                    <button className='saveButton'>Save</button>
-                    <button onClick={this.handleAddition}>Add another Note Box</button>
+                    <button className='saveButton'>Save</button> */}
+                    <TextBox handleAddition={this.handleAddition}/>
+                    {/* <button onClick={this.handleAddition}>Add another Note Box</button> */}
                     {this.state.addTextBox ? <TextBox /> : null}
                     {/* <textarea className='textArea' name='input2' />
                     <button className='saveButton'>Save</button>

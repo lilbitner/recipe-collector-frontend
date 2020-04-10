@@ -25,8 +25,9 @@
     margin-bottom: 30%;
     padding-bottom: 3%;
     padding-top: 3%;
-    margin-left: 28%;
+    /* margin-left: 28%; */
     display: flex;
+    margin: auto;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -38,21 +39,22 @@
     box-shadow: 0px 8px 16px gray;
 }
 
-#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, .upload{
+#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #recipeDescription, #recipeUrl, .upload{
     margin-bottom: 5%;
     width: 60%;
-    margin-left: 5%;
+    /* margin-left: 5%; */
     font-family: 'Gotu', sans-serif;
 }
 
 #pickFile {
     height: 100%;
+    width: 70%;
     font-family: 'Gotu', sans-serif;
     background-color: white;
 }
 
 
-#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile {
+#recipeInput, #recipeCategory, #recipeSubmit, #imageUpload, #pickFile, #recipeDescription, #recipeUrl {
     border: solid;
     border-color: #ffa372 ;
     box-shadow: 0px 0px 8px gray;
@@ -64,17 +66,18 @@
 
 
 
-.upload {
+/* .upload {
     display: flex;
     justify-content: space-between;
     text-align: center;
     align-items: center;
     align-content: center;
-}
+} */
 
-#recipeSubmittedMessage {
+#recipeSubmittedMessage , #pickWhatYouWant{
     text-align: center;
     font-family: 'Gotu', sans-serif;
+    margin-top: -1%;
 }
 
 #refreshButton {
