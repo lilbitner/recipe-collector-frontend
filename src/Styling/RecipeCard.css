@@ -19,6 +19,7 @@
 #recipeImage {
     height: 50%;
     width: 50%;
+    margin: auto;
     margin-bottom: 1%;
     border: solid;
     box-shadow: 0px 0px 8px gray;
