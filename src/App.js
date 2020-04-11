@@ -112,6 +112,15 @@ class App extends React.Component {
     })
   }
 
+  deleteRecipe = (id) => {
+    console.log(id)
+    const recipes = this.state.recipes.filter(recipe => recipe.id !== id)
+    this.setState({recipes})
+    fetch(`http://localhost:5000/recipes/delete/${id}`, {
+    method: 'DELETE'
+    })
+}
+
 
 
   render() {
@@ -131,7 +140,7 @@ class App extends React.Component {
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
           <Route path='/book' render={(props) => <RecipeBook recipes={this.state.recipes} 
-            user={this.state.user} {...props} />}
+            user={this.state.user} {...props} deleteRecipe={this.deleteRecipe}/>}
           />  
           <Route path='/notes' render={(props) => <RecipeNotes user={this.state.user} {...props} />}/>  
           <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} 
