@@ -26,9 +26,7 @@ export default class RecipeBook extends React.Component {
        isMiscellaneous: false
    }
    
-    // setRecipeState = () => {
-    //     this.setState({isAppetizers: false, isEntreés: false})
-    // }
+
     
     showAppetizers = (props) => {
         this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,

@@ -20,11 +20,39 @@
     height: 50%;
     width: 50%;
     margin: auto;
-    margin-bottom: 1%;
+    /* margin-top: 6%;
+    margin-bottom: 1%; */
     border: solid;
     box-shadow: 0px 0px 8px gray;
 }
 
 .recipeCard:hover {
     box-shadow: 0px 8px 16px whitesmoke;
+}
+
+#description {
+    padding-bottom: 4%;
+}
+
+#deleteButton {
+    font-family: 'Gotu', sans-serif;
+    margin-bottom: 4%;
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+    /* height: 6vh; */
+    box-shadow: 0px 0px 8px gray;
+    border: solid;
+    font-size: x-small;
+    border-color: #ffa372 ;
+}
+
+.deleteButton:active {
+    box-shadow: 0px 8px 16px whitesmoke;
+}
+
+.buttonContainer{
+    display: flex;
+    /* flex-direction: column; */
+    margin-top: 5%;
 }

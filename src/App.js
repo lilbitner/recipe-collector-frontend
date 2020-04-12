@@ -113,12 +113,21 @@ class App extends React.Component {
   }
 
   deleteRecipe = (id) => {
-    console.log(id)
-    const recipes = this.state.recipes.filter(recipe => recipe.id !== id)
-    this.setState({recipes})
     fetch(`http://localhost:5000/recipes/delete/${id}`, {
     method: 'DELETE'
+    }).then(response => response.json())
+    .then(response => {
+      if (response.status == 200){
+        const recipes = this.state.recipes.filter(recipe => recipe.id !== id)
+        this.setState({recipes: recipes})
+      }
     })
+  
+    // console.log(id)
+    // const recipes = this.state.recipes.filter(recipe => recipe.id !== id)
+    // console.log(recipes)
+    // this.setState({recipes})
+    
 }
 
 
