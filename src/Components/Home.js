@@ -33,7 +33,7 @@ export default class Home extends React.Component{
             <div className='buttonContainer'> 
                 <button onClick={() => this.props.history.push('/add')} id='uploadButton'>Add to your RecipeBook</button>
                 <button onClick={() => this.props.history.push('/book')} id='viewButton'>View your RecipeBook</button>
-                <button onClick={() => this.props.history.push('/notes')} id='notesButton'>RecipeNotes</button>
+                <button onClick={() => this.props.history.push('/notes')} id='notesButton'>Conversion Helper</button>
             </div>
             <div className='imageContainer'> 
                 <img id='uploadImage' src={this.state.image1} /> 
