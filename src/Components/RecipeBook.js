@@ -88,7 +88,7 @@ export default class RecipeBook extends React.Component {
             isSalads: false, isHoliday: false
         })
         const saladArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Salad'})
+            return recipe.category == 'Salads'})
             this.setState({Salads: saladArray, isSalads: true})
     }
 

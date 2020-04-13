@@ -31,21 +31,41 @@ export default class RecipeCard extends React.Component{
 
     render(){
         return(
-            <div className='recipeCard'>
-                {this.props.title.length !== 0 ? <h3 id='title'>{this.props.title}</h3> : null }
-                {this.props.description.length !== 0 ? <h4 id='description'>{this.props.description}</h4> : null }
-                {this.props.image.length !== 0 ? <Zoom> <img id='recipeImage' src={this.props.image} style={{width: '50%',
-                     height: '100%', marginLeft: '25%', marginTop: '0%', transform: `rotate(${this.state.rotation}deg)`}}  /></Zoom> : null 
+            // <div className='recipeCard'>
+            <>
+                {this.props.image.length === 0 ? 
+                    <div className='withoutImageContainer'>
+                        {this.props.title.length !== 0 ? <h3 id='titleWithoutImage'>{this.props.title}</h3> : null }
+                        {this.props.description.length !== 0 ? <h4 id='descriptionWithoutImage'>{this.props.description}</h4> : null }
+                        {this.props.url.length !== 0 ? <a id='urlWithoutImage' href={this.props.url}>Recipe URL</a> : null }
+                        
+                        <div className='cardbuttonContainerWithoutImage'>
+                            {this.props.image.length !== 0 ?
+                                <button id='deleteButton' onClick={this.handleRotation}>Rotate Image</button> : null }
+                                <button id='deleteButton' onClick={this.handleClick}>Delete Recipe</button>
+                        </div>
+                    </div>
+                    :null 
                 }
-                {this.props.url.length !== 0 ? <a id='url' href={this.props.url}>Recipe URL</a> : null }
-                {/* {this.props.image.length !== 0 ? <img id='recipeImage' src={this.props.image} /> : null } */}
-                {/* <img id='recipeImage' src={this.props.image} /> */}
-                <div className='cardbuttonContainer'>
-                {this.props.image.length !== 0 ?
-                    <button id='deleteButton' onClick={this.handleRotation}>Rotate Image</button> : null }
-                    <button id='deleteButton' onClick={this.handleClick}>Delete Recipe</button>
-                </div>
-            </div>
+
+                {this.props.image.length != 0 ? 
+                   <div className='recipeCard'> 
+                        {this.props.title.length !== 0 ? <h3 id='title'>{this.props.title}</h3> : null }
+                        {this.props.description.length !== 0 ? <h4 id='description'>{this.props.description}</h4> : null }
+                        {this.props.image.length !== 0 ? <Zoom> <img id='recipeImage' src={this.props.image} style={{width: '50%',
+                        height: '100%', marginLeft: '25%', marginTop: '0%', 
+                        transform: `rotate(${this.state.rotation}deg)`}}  /></Zoom> : null }
+                        {this.props.url.length !== 0 ? <a id='url' href={this.props.url}>Recipe URL</a> : null }
+                
+                        <div className='cardbuttonContainer'>
+                        {this.props.image.length !== 0 ?
+                            <button id='deleteButton' onClick={this.handleRotation}>Rotate Image</button> : null }
+                            <button id='deleteButton' onClick={this.handleClick}>Delete Recipe</button>
+                        </div>
+                    </div>
+                    : null 
+                }
+                </>
+            // </div>
         )
-    }
-}
+}}

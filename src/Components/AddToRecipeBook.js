@@ -51,8 +51,8 @@ export default class AddToRecipeBook extends React.Component {
             <Upload addImage={this.addImage} />
             <form  className='uploadForm' onSubmit={this.handleSubmit}> 
                 <input onChange={this.handleChange} id='recipeInput' type='text' name='title' placeholder='Recipe Name' />
-                <textarea onChange={this.handleChange} id='recipeDescription' rows='10' cols='10' wrap='soft' name='description'
-                    placeholder='Recipe Description'>
+                <textarea onChange={this.handleChange} id='recipeDescription' rows='6' cols='10' wrap='soft' name='description'
+                    placeholder='short recipe description'>
                 </textarea>
                 <select onChange={this.handleChange} id='recipeCategory' type='text' name='category' > 
                     <option value='' disabled selected hidden>Select a Recipe Category</option>
