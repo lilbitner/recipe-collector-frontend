@@ -4,12 +4,8 @@ import '../Styling/SignUp.css'
 import {Redirect} from 'react-router-dom'
 
 export default class Login extends React.Component {
-    
-    // goToHome = () => {
-    //     if (this.props.isLoggedIn) 
-    //     {return <Redirect to='/' />} 
-    //  }
-    
+
+
     
     render(){
         return(
@@ -20,7 +16,6 @@ export default class Login extends React.Component {
                     <LoginForm {...this.props} login={this.props.login} />
                     {this.props.isLoggedIn? this.props.history.push('/') : null}
                     {!this.props.isCorrectUser? <h2>Incorrect user credentials, please try again</h2>: null}
-                    {/* {this.goToHome()}  */}
                 </div>
             </div>
         )

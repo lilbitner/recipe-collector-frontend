@@ -15,25 +15,22 @@ export default class Home extends React.Component{
     }
 
 
-    // addToBook = (event) => {
-    //     event.preventDefault();
-    //     console.log(event.target);
-    //    return  <Redirect to='/addtorecipebook' />
-    //     // return this.props.history.push('/addtorecipebook')
-    // }
     
     
     render() {
         return(
             <>
             <Nav user={this.props.user} />
-            {/* <h1> {this.props.user.username ? `Welcome to Recipe Collector ${this.props.user.username}`: null}</h1> */}
-            {/* <h3>Tired of losing recipes in your great grandmothers handwriting?</h3>
-            <h3>Want a digital collecition of your recipes?</h3> */}
             <div className='buttonContainer'> 
-                <button onClick={() => this.props.history.push('/add')} id='uploadButton'>Add to your RecipeBook</button>
-                <button onClick={() => this.props.history.push('/book')} id='viewButton'>View your RecipeBook</button>
-                <button onClick={() => this.props.history.push('/notes')} id='notesButton'>Conversion Helper</button>
+                <button onClick={() => this.props.history.push('/add')} 
+                    id='uploadButton'>Add to your RecipeBook
+                </button>
+                <button onClick={() => this.props.history.push('/book')} 
+                    id='viewButton'>View your RecipeBook
+                </button>
+                <button onClick={() => this.props.history.push('/notes')}
+                     id='notesButton'>Conversion Helper
+                </button>
             </div>
             <div className='imageContainer'> 
                 <img id='uploadImage' src={this.state.image1} /> 

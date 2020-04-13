@@ -33,14 +33,19 @@
 }
 
 .recipeBody {
+    /* flex: 1; */
     /* display: grid; 
-    grid-template-columns: repeat(1, auto); */
+    grid-template-columns: repeat( 2, auto); */
+    /* justify-content: center;
+    justify-content: space-evenly; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
     justify-content: space-evenly;
+    text-align: center;
+    /* justify-content: space-evenly;  */
     /* margin-left: 23%; */
     margin-top: 1%;
 }

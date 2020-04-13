@@ -46,7 +46,6 @@ export default class AddToRecipeBook extends React.Component {
             <>
             <Nav user={this.props.user} />
             <h1>AddToRecipeBook</h1>
-            {/* <form  className='uploadForm' onSubmit={this.handleSubmit}>  */}
             <div className='allUploadInputs'> 
             <h3 id='pickWhatYouWant'> Pick and choose what you would like to add</h3>
             <Upload addImage={this.addImage} />
@@ -71,10 +70,10 @@ export default class AddToRecipeBook extends React.Component {
                 <input id='recipeSubmit' type='submit' />
             </form>
             {this.props.isRecipeCreated ? 
-            <>
-            <h3 id='recipeSubmittedMessage'>Recipe Submitted!</h3>
-            <button id='refreshButton' onClick={this.handleRefresh}>Submit another Recipe</button>
-            </>
+                <>
+                    <h3 id='recipeSubmittedMessage'>Recipe Submitted!</h3>
+                    <button id='refreshButton' onClick={this.handleRefresh}>Submit another Recipe</button>
+                </>
              : null}
              </div>
             </>

@@ -1,7 +1,7 @@
 .buttonContainer {
     display: flex;
     justify-content: space-evenly;
-    /* padding-top: 2rem; */
+    padding-top: 2rem;
 }
 
 #uploadButton, #viewButton, #notesButton {

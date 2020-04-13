@@ -25,6 +25,20 @@ export default class RecipeBook extends React.Component {
        Miscellaneous: [],
        isMiscellaneous: false
    }
+
+   updatesState = (id) => {
+        this.setState({
+            Appetizers: this.state.Appetizers.filter(recipe => recipe.id !== id), 
+            Entreés: this.state.Entreés.filter(recipe => recipe.id !== id), 
+            Desserts: this.state.Desserts.filter(recipe => recipe.id !== id), 
+            Sides: this.state.Sides.filter(recipe => recipe.id !== id), 
+            Salads: this.state.Salads.filter(recipe => recipe.id !== id), 
+            Holiday: this.state.Holiday.filter(recipe => recipe.id !== id), 
+            Brunch: this.state.Brunch.filter(recipe => recipe.id !== id), 
+            Beverages: this.state.Beverages.filter(recipe => recipe.id !== id), 
+            Miscellaneous: this.state.Miscellaneous.filter(recipe => recipe.id !== id)
+        })
+   }
    
 
     
@@ -136,17 +150,16 @@ export default class RecipeBook extends React.Component {
                         <button onClick={this.showBeverages} className='recipeButton'>Beverages</button>
                         <button onClick={this.showMiscellaneous} className='recipeButton'>Miscellaneous</button>
                     </div> 
-                {/* {this.makeRecipeCard()} */}
                 <div className='recipeBody'> 
-                    {this.state.isAppetizers ? this.state.Appetizers.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isEntreés ? this.state.Entreés.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null}
-                    {this.state.isDesserts ? this.state.Desserts.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isBrunch ? this.state.Brunch.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isBeverages ? this.state.Beverages.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isMiscellaneous ? this.state.Miscellaneous.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isSides ? this.state.Sides.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe} {...recipe}/>) : null}
-                    {this.state.isSalads ? this.state.Salads.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isHoliday ? this.state.Holiday.map(recipe => <RecipeCard key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isAppetizers ? this.state.Appetizers.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isEntreés ? this.state.Entreés.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null}
+                    {this.state.isDesserts ? this.state.Desserts.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isBrunch ? this.state.Brunch.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isBeverages ? this.state.Beverages.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isMiscellaneous ? this.state.Miscellaneous.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isSides ? this.state.Sides.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe} {...recipe}/>) : null}
+                    {this.state.isSalads ? this.state.Salads.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.isHoliday ? this.state.Holiday.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
                 </div>
                 </div>
                 {/* <div className='recipeBody'> 

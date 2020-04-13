@@ -19,8 +19,8 @@ export default class signUp extends React.Component{
                     <LoginForm {...this.props} login={this.props.createUser}/> 
                     <Link to='/login' id='loginLink'>Already have an account? Login here</Link>
                     {this.props.isUser? <h2>Welcome! Please Login!</h2> : null}
-                    {this.props.isCreatedUser? <h2>Could not register account, please try again</h2> :null}
-                    {/* {this.goToLogin()} */}
+                    {this.props.isCreatedUser? <h2>Could not register account, please try again with unique username</h2> :null}
+                    {this.props.isPasswordShort? <h2>Password must be at least 5 characters</h2>: null}
                 </div>
             </div>
         )

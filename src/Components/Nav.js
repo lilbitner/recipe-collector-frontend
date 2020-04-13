@@ -9,7 +9,6 @@ export default class Nav extends React.Component{
                 <h3 id='welcomeName'>Welcome {this.props.user.username}</h3>
                 <Link to='/' id="webTitle">Recipe Collector</Link>
                 <NavLink id ='logout' to='/login'>Logout</NavLink>
-
             </nav>
         )
     }
