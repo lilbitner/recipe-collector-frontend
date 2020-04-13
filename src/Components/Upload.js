@@ -55,7 +55,9 @@ export default class Upload extends React.Component {
                 />
                 <button id='imageUpload' onClick={this.handleUpload}>Upload Image </button>
             </div>
-            {!this.state.isLoaded ? <img id='loadingImage' src='https://cdn.lowgif.com/small/d35d94c490e598e3-loading-gif-transparent-loading-gif.gif' alt='File is Loading!' /> : null}
+            {!this.state.isLoaded ? <img id='loadingImage' 
+                src='https://cdn.lowgif.com/small/d35d94c490e598e3-loading-gif-transparent-loading-gif.gif' alt='File is Loading!' 
+            /> : null}
             {this.state.isUrl ? <h3 id='recipeSubmittedMessage'>Image Uploaded!</h3> : null}
             </>
 

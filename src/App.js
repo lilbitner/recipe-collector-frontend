@@ -17,6 +17,7 @@ class App extends React.Component {
     isCreatedUser: false,
     isLoggedIn: false,
     isCorrectUser: true,
+    isPasswordShort: false,
     isRecipeCreated: false,
     recipes: []
   }
@@ -33,7 +34,11 @@ class App extends React.Component {
       {
         // localStorage.setItem('userId', response.id)
         this.setState({isUser: true})
-      } else {this.setState({isCreatedUser: true})}
+      } 
+      if (response.status === 401) 
+      {this.setState({isCreatedUser: true})}
+      if (response.status === 406)
+      {this.setState({isPasswordShort: true})}
     })
   }
     
@@ -51,7 +56,12 @@ class App extends React.Component {
       .then(result => this.setState({user: result.user}))
     }
 
-    fetch(`http://localhost:5000/recipes/${localStorage.user_id}`)
+    fetch(`http://localhost:5000/recipes/${localStorage.user_id}`, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+      })
         .then(response => response.json())
         .then(recipesObject => {
             this.setState({recipes: recipesObject.recipes})
@@ -103,7 +113,9 @@ class App extends React.Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({title: recipe.title, category: recipe.category, description: recipe.description, url: recipe.url, image: recipe.image, user_id: recipe.user_id})
+      body: JSON.stringify({title: recipe.title, 
+        category: recipe.category, description: recipe.description, url: recipe.url, image: recipe.image, user_id: recipe.user_id}
+      )
     })
     .then(response => {
       if (response.status == 201){
@@ -122,13 +134,9 @@ class App extends React.Component {
         this.setState({recipes: recipes})
       }
     })
-  
-    // console.log(id)
-    // const recipes = this.state.recipes.filter(recipe => recipe.id !== id)
-    // console.log(recipes)
-    // this.setState({recipes})
     
 }
+
 
 
 
@@ -140,11 +148,12 @@ class App extends React.Component {
           <PrivateRoute exact user={this.state.user} path='/' />
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/signup' render={(props) => <SignUp {...props} 
-            isUser={this.state.isUser} isCreatedUser={this.state.isCreatedUser} createUser={this.createUser}/>}
+            isUser={this.state.isUser} isPasswordShort = {this.state.isPasswordShort} 
+            isCreatedUser={this.state.isCreatedUser} createUser={this.createUser}/>}
           /> 
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/login' render={(props)=> <Login {...props} 
-            isLoggedIn={this.state.isLoggedIn} isCorrectUser={this.state.isCorrectUser} login={this.login} />}
+            isLoggedIn={this.state.isLoggedIn}  isCorrectUser={this.state.isCorrectUser} login={this.login} />}
           />
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}

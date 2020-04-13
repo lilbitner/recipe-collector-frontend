@@ -27,9 +27,15 @@ export default class RecipeNotes extends React.Component {
 
                 {/* <h4 id='tableTitle'>Conversion Table</h4> */}
                 <div class="lines">
-                    <img id='measureImage' src="https://images.unsplash.com/flagged/photo-1552938218-ac9ec40c702a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" />
-                    <img id='measureImage' src='https://images.unsplash.com/photo-1562245376-3f9dae9f0e73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'/>
-                    <img id='measureImage' src='https://images.unsplash.com/photo-1581625392889-44d4db508d00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' />
+                    <img id='measureImage' 
+                        src="https://images.unsplash.com/flagged/photo-1552938218-ac9ec40c702a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" 
+                    />
+                    <img id='measureImage' 
+                        src='https://images.unsplash.com/photo-1562245376-3f9dae9f0e73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+                    />
+                    <img id='measureImage' 
+                        src='https://images.unsplash.com/photo-1581625392889-44d4db508d00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80' 
+                    />
                 </div>
                 <div> 
                     <h4>Liquid Measure Equivalents</h4>
@@ -166,16 +172,7 @@ export default class RecipeNotes extends React.Component {
                         </tbody>
                     </table>
 
-
                 </div>
-
-                {/* <ul id="List"> */} 
-                  
-                    {/* <TextBox handleAddition={this.handleAddition}/>
-                    {/* <button onClick={this.handleAddition}>Add another Note Box</button> */}
-                    {/* {this.state.addTextBox ? <TextBox /> : null} */}
-                   
-                {/* </ul> */}
 
             </body>
             </div>
