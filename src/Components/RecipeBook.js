@@ -26,6 +26,8 @@ export default class RecipeBook extends React.Component {
        isMiscellaneous: false
    }
 
+   
+
    updatesState = (id) => {
         this.setState({
             Appetizers: this.state.Appetizers.filter(recipe => recipe.id !== id), 
@@ -131,7 +133,67 @@ export default class RecipeBook extends React.Component {
             return recipe.category == 'Miscellaneous'})
             this.setState({Miscellaneous: otherArray, isMiscellaneous: true})
     }
+
+    handleChange = (e) => {
+        let Appetizers = []; 
+        let newAppetizerList = [];
+        if (e.target.value !== "") {
+            Appetizers = this.state.Appetizers;
+            newAppetizerList = Appetizers.filter(recipe => {
+            const lc = recipe.title.toLowerCase();
+                
+            const filter = e.target.value.toLowerCase();
+            return lc.includes(filter);
+      });
+        } else {
+            return this.showAppetizers()
+        }
+            this.setState({
+            Appetizers: newAppetizerList
+        });
+    }
+
     
+
+    handleChange = (e) => {
+        let Desserts = []; 
+        let newDessertList = [];
+        if (e.target.value !== "") {
+            Desserts = this.state.Desserts;
+            newDessertList = Desserts.filter(recipe => {
+            const lc = recipe.title.toLowerCase();
+                
+            const filter = e.target.value.toLowerCase();
+            return lc.includes(filter);
+      });
+        } else {
+            // return this.showDesserts()
+        }
+            this.setState({
+            Desserts: newDessertList
+        });
+    }
+
+
+    // handleChange = (e) => {
+    //     let Sides = []; 
+    //     let newSideList = [];
+    //     if (e.target.value !== "") {
+    //         Sides = this.state.Sides;
+    //         newSideList = Sides.filter(recipe => {
+    //         const lc = recipe.title.toLowerCase();
+                
+    //         const filter = e.target.value.toLowerCase();
+    //         return lc.includes(filter);
+    //   });
+    //     } else {
+    //         return this.showSides()
+    //     }
+    //         this.setState({
+    //         Sides: newSideList
+    //     });
+    // }
+
     render() {
 
  
@@ -150,6 +212,7 @@ export default class RecipeBook extends React.Component {
                         <button onClick={this.showBeverages} className='recipeButton'>Beverages</button>
                         <button onClick={this.showMiscellaneous} className='recipeButton'>Miscellaneous</button>
                     </div> 
+                    <input type='text' className='search' onChange={this.handleChange} placeholder="Search..." />
                 <div className='recipeBody'> 
                     {this.state.isAppetizers ? this.state.Appetizers.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
                     {this.state.isEntreés ? this.state.Entreés.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null}

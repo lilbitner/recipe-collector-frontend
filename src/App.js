@@ -45,6 +45,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
+    console.log('mount')
     if(localStorage.token){
       fetch(`http://localhost:5000/users/authenticate`, {
       method: "GET",
@@ -55,7 +56,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(result => this.setState({user: result.user}))
     }
-
+    if(localStorage.token){
     fetch(`http://localhost:5000/recipes/${localStorage.user_id}`, {
       method: "GET",
       headers: {
@@ -66,6 +67,7 @@ class App extends React.Component {
         .then(recipesObject => {
             this.setState({recipes: recipesObject.recipes})
         })
+    }
   }
 
   login = (user) => {
@@ -76,10 +78,6 @@ class App extends React.Component {
       },
       body: JSON.stringify({username: user.username, password: user.password})
     })
-    // .then(response => {
-    //   if(response.status == 401)
-    //   { this.setState({isCorrectUser: false}) }
-    // })
     .then(response => response.json())
     .then(response => {
       if(response.status == 401)
@@ -87,22 +85,9 @@ class App extends React.Component {
      else {
       localStorage.setItem('token', response.token)
       localStorage.setItem('user_id', response.foundUser.id)
+      this.componentDidMount()
       this.setState({isLoggedIn: true, user: response.foundUser})}
      })
-    
-    
-  
-
-    // .then(response => {
-    //   if(response.status == 401)
-    //   { this.setState({isCorrectUser: false}) } else {
-    //     // this.setState({user: response.foundUser, isLoggedIn: true})
-    //     localStorage.setItem('token', response.token)
-    //     this.setState({isLoggedIn: true})}
-    //     // localStorage.setItem('userId', response.foundUser.id)
-    //     // this.setState({user: response.foundUser, isLoggedIn: true})
-    //   // } else {}
-    // })
   }
 
   addRecipe = (recipe) => {
@@ -153,7 +138,7 @@ class App extends React.Component {
           /> 
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/login' render={(props)=> <Login {...props} 
-            isLoggedIn={this.state.isLoggedIn}  isCorrectUser={this.state.isCorrectUser} login={this.login} />}
+            isLoggedIn={this.state.isLoggedIn} isCorrectUser={this.state.isCorrectUser} login={this.login} />}
           />
           {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
