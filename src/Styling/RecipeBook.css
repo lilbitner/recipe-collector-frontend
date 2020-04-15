@@ -29,6 +29,7 @@
     border: solid;
     margin-top: 2%;
     box-shadow: 0px 0px 8px white;
+    font-family: 'Gotu', sans-serif;
 }
 
 .recipeButton:hover {
@@ -51,4 +52,14 @@
     /* justify-content: space-evenly;  */
     /* margin-left: 23%; */
     margin-top: 1%;
+}
+
+.search {
+    border: solid;
+    font-family: 'Gotu', sans-serif;
+    margin: auto;
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 8px white;
 }
