@@ -9,6 +9,7 @@ export default class RecipeBook extends React.Component {
    state = {
        Categories: ["Appetizer", "Entreé", "Dessert", "Sides", "Salads", "Holiday", "Beverage", "Brunch", "Miscellaneous"],
        filteredRecipes: [],
+       searchedArray: [],
     //    Appetizers: [],
        Appetizer: false,
     //    Entreés: [],
@@ -48,95 +49,95 @@ export default class RecipeBook extends React.Component {
    
 
     
-    showAppetizers = (props) => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const appetizerArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Appetizer'})
-        this.setState({Appetizers: appetizerArray, isAppetizers: true})
-    }
+    // showAppetizers = (props) => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const appetizerArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Appetizer'})
+    //     this.setState({Appetizers: appetizerArray, isAppetizers: true})
+    // }
     
-    showEntrees = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-      const entreeArray = this.props.recipes.filter(recipe => {
-          return recipe.category == 'Entreé'})
-          this.setState({Entreés: entreeArray, isEntreés: true})
-    }
+    // showEntrees = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //   const entreeArray = this.props.recipes.filter(recipe => {
+    //       return recipe.category == 'Entreé'})
+    //       this.setState({Entreés: entreeArray, isEntreés: true})
+    // }
     
-    showDesserts = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const dessertArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Dessert'})
-            this.setState({Desserts: dessertArray, isDesserts: true})
-    }
+    // showDesserts = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const dessertArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Dessert'})
+    //         this.setState({Desserts: dessertArray, isDesserts: true})
+    // }
 
-    showSides = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const sideArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Sides'})
-            this.setState({Sides: sideArray, isSides: true})
-    }
+    // showSides = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const sideArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Sides'})
+    //         this.setState({Sides: sideArray, isSides: true})
+    // }
 
-    showSalads = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const saladArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Salads'})
-            this.setState({Salads: saladArray, isSalads: true})
-    }
+    // showSalads = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const saladArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Salads'})
+    //         this.setState({Salads: saladArray, isSalads: true})
+    // }
 
-    showHoliday = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const holidayArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Holiday'})
-            this.setState({Holiday: holidayArray, isHoliday: true})
-    }
+    // showHoliday = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const holidayArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Holiday'})
+    //         this.setState({Holiday: holidayArray, isHoliday: true})
+    // }
     
-    showBeverages = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const drinkArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Beverage'})
-            this.setState({Beverages: drinkArray, isBeverages: true})
-    }
+    // showBeverages = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const drinkArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Beverage'})
+    //         this.setState({Beverages: drinkArray, isBeverages: true})
+    // }
     
-    showBrunch = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const breakfastArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Brunch'})
-            this.setState({Brunch: breakfastArray, isBrunch: true})
-    }
+    // showBrunch = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const breakfastArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Brunch'})
+    //         this.setState({Brunch: breakfastArray, isBrunch: true})
+    // }
     
-    showMiscellaneous = () => {
-        this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
-            isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
-            isSalads: false, isHoliday: false
-        })
-        const otherArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Miscellaneous'})
-            this.setState({Miscellaneous: otherArray, isMiscellaneous: true})
-    }
+    // showMiscellaneous = () => {
+    //     this.setState({isAppetizers: false, isEntreés: false, isBrunch: false,
+    //         isDesserts: false, isBeverages: false, isMiscellaneous: false, isSides: false,
+    //         isSalads: false, isHoliday: false
+    //     })
+    //     const otherArray = this.props.recipes.filter(recipe => {
+    //         return recipe.category == 'Miscellaneous'})
+    //         this.setState({Miscellaneous: otherArray, isMiscellaneous: true})
+    // }
 
     // handleChange = (e) => {
     //     let filteredRecipes = []; 
@@ -162,12 +163,30 @@ export default class RecipeBook extends React.Component {
             Dessert: false, Beverage: false, Miscellaneous: false, Sides: false,
             Salads: false, Holiday: false, filteredRecipes: []
         })
-        let category = e.target.textContent 
+        
+        let category = e.target.textContent
 
         let filteredRecipes = this.props.recipes.filter(recipe => {
             return recipe.category == category})
-            this.setState({filteredRecipes: filteredRecipes, [category]: true})
-    }
+            this.setState({filteredRecipes: filteredRecipes, searchedArray: filteredRecipes, [category]: true})
+        }
+
+
+        // handleSearch =   (label) => {
+        //     console.log(label)
+        //     this.setState({Appetizer: false, Entreé: false, Brunch: false,
+        //         Dessert: false, Beverage: false, Miscellaneous: false, Sides: false,
+        //         Salads: false, Holiday: false, filteredRecipes: []
+        //     })
+        //         let category = label 
+    
+        //         let filteredRecipes = this.props.recipes.filter(recipe => {
+        //             return recipe.category == category})
+        //             this.setState({[category]: false})
+        //             this.setState({filteredRecipes: filteredRecipes, searchedArray: filteredRecipes, [category]: true})
+                    // this.setState({[category]: true})
+            // }
+
 
     buttons = () => {
         return this.state.Categories.map(category => <button onClick={this.handleClick} key={category} 
@@ -175,25 +194,26 @@ export default class RecipeBook extends React.Component {
     }
 
     handleChange = (e) => {
-        let filteredRecipes = []; 
+        // let filteredRecipes = []; 
         let newList = [];
-        if (e.target.value !== "") {
-            console.log(e.target.value)
-            filteredRecipes = this.state.filteredRecipes;
-            // console.log(recipes)
+        // if (e.target.value !== "") {
+            const {filteredRecipes} = this.state
             newList = filteredRecipes.filter(recipe => {
             const lc = recipe.title.toLowerCase();
-            console.log(lc)
-                
+
             const filter = e.target.value.toLowerCase();
-            console.log('filter', lc.includes(filter))
             return lc.includes(filter);
       });
-        } else {
+        // } else {
+        //     if (this.state.Appetizer === true) { 
+        //     const label = "Appetizer"
+        //     console.log(label)
+        //     this.handleSearch(label)}
+           
             
-        }
+        // }
             this.setState({
-            filteredRecipes: newList
+            searchedArray: newList
         });
     }
 
@@ -219,31 +239,31 @@ export default class RecipeBook extends React.Component {
                     </div> 
                     <input type='text' className='search' onChange={this.handleChange} placeholder="Search..." />
                 <div className='recipeBody'> 
-                    {this.state.Appetizer ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Appetizer ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Entreé ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Entreé ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null
                     }
-                    {this.state.Dessert ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Dessert ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Brunch ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState}
+                    {this.state.Brunch ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState}
                          key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Beverage ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Beverage ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Miscellaneous ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Miscellaneous ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Sides ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Sides ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe} {...recipe}/>) : null
                     }
-                    {this.state.Salads ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Salads ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
-                    {this.state.Holiday ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                    {this.state.Holiday ? this.state.searchedArray.map(recipe => <RecipeCard updatesState={this.updatesState} 
                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
                     }
                 </div>
