@@ -163,16 +163,15 @@ export default class RecipeBook extends React.Component {
             Salads: false, Holiday: false, filteredRecipes: []
         })
         let category = e.target.textContent 
-        // console.log(category)
 
         let filteredRecipes = this.props.recipes.filter(recipe => {
             return recipe.category == category})
-        // console.log(filteredRecipes)
             this.setState({filteredRecipes: filteredRecipes, [category]: true})
     }
 
     buttons = () => {
-        return this.state.Categories.map(category => <button onClick={this.handleClick} key={category} className='recipeButton'>{category}</button>)
+        return this.state.Categories.map(category => <button onClick={this.handleClick} key={category} 
+            className='recipeButton'>{category}</button>)
     }
 
     handleChange = (e) => {
@@ -201,10 +200,6 @@ export default class RecipeBook extends React.Component {
 
 
     render() {
-
-        
-
-
  
         return(
             <>

@@ -23,10 +23,10 @@ export default class RecipeNotes extends React.Component {
         return(
             <div className='notes'> 
             <Nav user={this.props.user}/>
-            <body className='notesBody'>
+            <div className='notesBody'>
 
                 {/* <h4 id='tableTitle'>Conversion Table</h4> */}
-                <div class="lines">
+                <div className="lines">
                     <img id='measureImage' 
                         src="https://images.unsplash.com/flagged/photo-1552938218-ac9ec40c702a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" 
                     />
@@ -174,7 +174,7 @@ export default class RecipeNotes extends React.Component {
 
                 </div>
 
-            </body>
+            </div>
             </div>
         )
     }
