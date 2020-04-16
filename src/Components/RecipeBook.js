@@ -3,42 +3,46 @@ import Nav from './Nav'
 import RecipeCard from './RecipeCard'
 import '../Styling/RecipeBook.css'
 
+
 export default class RecipeBook extends React.Component {
     
    state = {
-       Appetizers: [],
-       isAppetizers: false,
-       Entreés: [],
-       isEntreés: false,
-       Desserts: [],
-       isDesserts: false,
-       Sides: [],
-       isSides: false,
-       Salads: [],
-       isSalads: false,
-       Holiday: [],
-       isHoliday: false,
-       Brunch: [],
-       isBrunch: false,
-       Beverages: [],
-       isBeverages: false,
-       Miscellaneous: [],
-       isMiscellaneous: false
+       Categories: ["Appetizer", "Entreé", "Dessert", "Sides", "Salads", "Holiday", "Beverage", "Brunch", "Miscellaneous"],
+       filteredRecipes: [],
+    //    Appetizers: [],
+       Appetizer: false,
+    //    Entreés: [],
+       Entreé: false,
+    //    Desserts: [],
+       Dessert: false,
+    //    Sides: [],
+       Sides: false,
+    //    Salad: [],
+       Salads: false,
+    //    Holiday: [],
+       Holiday: false,
+    //    Brunch: [],
+       Brunch: false,
+    //    Beverages: [],
+       Beverage: false,
+    //    Miscellaneous: [],
+       Miscellaneous: false
    }
 
    
 
    updatesState = (id) => {
         this.setState({
-            Appetizers: this.state.Appetizers.filter(recipe => recipe.id !== id), 
-            Entreés: this.state.Entreés.filter(recipe => recipe.id !== id), 
-            Desserts: this.state.Desserts.filter(recipe => recipe.id !== id), 
-            Sides: this.state.Sides.filter(recipe => recipe.id !== id), 
-            Salads: this.state.Salads.filter(recipe => recipe.id !== id), 
-            Holiday: this.state.Holiday.filter(recipe => recipe.id !== id), 
-            Brunch: this.state.Brunch.filter(recipe => recipe.id !== id), 
-            Beverages: this.state.Beverages.filter(recipe => recipe.id !== id), 
-            Miscellaneous: this.state.Miscellaneous.filter(recipe => recipe.id !== id)
+            filteredRecipes: this.state.filteredRecipes.filter(recipe => recipe.id !== id)
+            // Appetizers: this.state.Appetizers.filter(recipe => recipe.id !== id), 
+            // Entreés: this.state.Entreés.filter(recipe => recipe.id !== id), 
+            // Desserts: this.state.Desserts.filter(recipe => recipe.id !== id), 
+            // Sides: this.state.Sides.filter(recipe => recipe.id !== id), 
+            // Salads: this.state.Salads.filter(recipe => recipe.id !== id), 
+            // Holiday: this.state.Holiday.filter(recipe => recipe.id !== id), 
+            // Brunch: this.state.Brunch.filter(recipe => recipe.id !== id), 
+            // Beverages: this.state.Beverages.filter(recipe => recipe.id !== id), 
+            // Miscellaneous: this.state.Miscellaneous.filter(recipe => recipe.id !== id)
         })
    }
    
@@ -80,7 +84,7 @@ export default class RecipeBook extends React.Component {
             isSalads: false, isHoliday: false
         })
         const sideArray = this.props.recipes.filter(recipe => {
-            return recipe.category == 'Side'})
+            return recipe.category == 'Sides'})
             this.setState({Sides: sideArray, isSides: true})
     }
 
@@ -134,67 +138,72 @@ export default class RecipeBook extends React.Component {
             this.setState({Miscellaneous: otherArray, isMiscellaneous: true})
     }
 
-    handleChange = (e) => {
-        let Appetizers = []; 
-        let newAppetizerList = [];
-        if (e.target.value !== "") {
-            Appetizers = this.state.Appetizers;
-            newAppetizerList = Appetizers.filter(recipe => {
-            const lc = recipe.title.toLowerCase();
-                
-            const filter = e.target.value.toLowerCase();
-            return lc.includes(filter);
-      });
-        } else {
-            return this.showAppetizers()
-        }
-            this.setState({
-            Appetizers: newAppetizerList
-        });
-    }
-
-    
-
-    handleChange = (e) => {
-        let Desserts = []; 
-        let newDessertList = [];
-        if (e.target.value !== "") {
-            Desserts = this.state.Desserts;
-            newDessertList = Desserts.filter(recipe => {
-            const lc = recipe.title.toLowerCase();
-                
-            const filter = e.target.value.toLowerCase();
-            return lc.includes(filter);
-      });
-        } else {
-            // return this.showDesserts()
-        }
-            this.setState({
-            Desserts: newDessertList
-        });
-    }
-
-
     // handleChange = (e) => {
-    //     let Sides = []; 
-    //     let newSideList = [];
+    //     let filteredRecipes = []; 
+    //     let newList = [];
     //     if (e.target.value !== "") {
-    //         Sides = this.state.Sides;
-    //         newSideList = Sides.filter(recipe => {
+    //         let recipes = this.state.filteredRecipes;
+    //         let newList = recipes.filter(recipe => {
     //         const lc = recipe.title.toLowerCase();
                 
     //         const filter = e.target.value.toLowerCase();
     //         return lc.includes(filter);
     //   });
     //     } else {
-    //         return this.showSides()
+    //         return this.handleClick()
     //     }
     //         this.setState({
-    //         Sides: newSideList
+    //         filteredRecipes: newList
     //     });
     // }
 
+    handleClick = (e) => {
+        this.setState({Appetizer: false, Entreé: false, Brunch: false,
+            Dessert: false, Beverage: false, Miscellaneous: false, Sides: false,
+            Salads: false, Holiday: false, filteredRecipes: []
+        })
+        let category = e.target.textContent 
+        // console.log(category)
+
+        let filteredRecipes = this.props.recipes.filter(recipe => {
+            return recipe.category == category})
+        // console.log(filteredRecipes)
+            this.setState({filteredRecipes: filteredRecipes, [category]: true})
+    }
+
+    buttons = () => {
+        return this.state.Categories.map(category => <button onClick={this.handleClick} key={category} className='recipeButton'>{category}</button>)
+    }
+
+    handleChange = (e) => {
+        let filteredRecipes = []; 
+        let newList = [];
+        if (e.target.value !== "") {
+            console.log(e.target.value)
+            filteredRecipes = this.state.filteredRecipes;
+            // console.log(recipes)
+            newList = filteredRecipes.filter(recipe => {
+            const lc = recipe.title.toLowerCase();
+            console.log(lc)
+                
+            const filter = e.target.value.toLowerCase();
+            console.log('filter', lc.includes(filter))
+            return lc.includes(filter);
+      });
+        } else {
+            
+        }
+            this.setState({
+            filteredRecipes: newList
+        });
+    }
+
+
+
     render() {
+
+        
+
 
  
         return(
@@ -202,33 +211,48 @@ export default class RecipeBook extends React.Component {
                 <Nav user={this.props.user} />
                 <div className='recipeBook'>
                     <div className='buttonsContainer'>
-                        <button onClick={this.showAppetizers} className='recipeButton'>Appetizers</button>
+                        {this.buttons()}
+                        {/* <button onClick={this.showAppetizers} className='recipeButton'>Appetizers</button>
                         <button onClick={this.showEntrees} className='recipeButton'>Entreés</button>
                         <button onClick={this.showDesserts} className='recipeButton'>Dessert</button>
                         <button onClick={this.showSides} className='recipeButton'>Sides</button>
                         <button onClick={this.showSalads} className='recipeButton'>Salad</button>
                         <button onClick={this.showHoliday} className='recipeButton'>Holiday</button>
-                        <button onClick={this.showBrunch} className='recipeButton'>Breakfast</button>
+                        <button onClick={this.showBrunch} className='recipeButton'>Brunch</button>
                         <button onClick={this.showBeverages} className='recipeButton'>Beverages</button>
-                        <button onClick={this.showMiscellaneous} className='recipeButton'>Miscellaneous</button>
+                        <button onClick={this.showMiscellaneous} className='recipeButton'>Miscellaneous</button> */}
                     </div> 
                     <input type='text' className='search' onChange={this.handleChange} placeholder="Search..." />
                 <div className='recipeBody'> 
-                    {this.state.isAppetizers ? this.state.Appetizers.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isEntreés ? this.state.Entreés.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null}
-                    {this.state.isDesserts ? this.state.Desserts.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isBrunch ? this.state.Brunch.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isBeverages ? this.state.Beverages.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isMiscellaneous ? this.state.Miscellaneous.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isSides ? this.state.Sides.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe} {...recipe}/>) : null}
-                    {this.state.isSalads ? this.state.Salads.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
-                    {this.state.isHoliday ? this.state.Holiday.map(recipe => <RecipeCard updatesState={this.updatesState} key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null}
+                    {this.state.Appetizer ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Entreé ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>): null
+                    }
+                    {this.state.Dessert ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Brunch ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState}
+                         key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Beverage ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Miscellaneous ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Sides ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe} {...recipe}/>) : null
+                    }
+                    {this.state.Salads ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
+                    {this.state.Holiday ? this.state.filteredRecipes.map(recipe => <RecipeCard updatesState={this.updatesState} 
+                        key={recipe.id} deleteRecipe={this.props.deleteRecipe}  {...recipe}/>) : null
+                    }
                 </div>
                 </div>
-                {/* <div className='recipeBody'> 
-                    {this.state.isAppetizers ? this.state.Appetizers.map(recipe => <RecipeCard {...recipe}/>) : null}
-                </div> */}
-                {/* {this.showAppetizers} */}
             </>
         )
     }

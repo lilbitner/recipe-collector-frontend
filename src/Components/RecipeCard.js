@@ -31,7 +31,6 @@ export default class RecipeCard extends React.Component{
 
     render(){
         return(
-            // <div className='recipeCard'>
             <>
                 {this.props.image.length === 0 ? 
                     <div className='withoutImageContainer'>
@@ -65,7 +64,6 @@ export default class RecipeCard extends React.Component{
                     </div>
                     : null 
                 }
-                </>
-            // </div>
+            </>
         )
 }}
