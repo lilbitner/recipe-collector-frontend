@@ -13,7 +13,7 @@ export default class Login extends React.Component {
             <div className='mainBody'>
                 <div className='signup'> 
                     <h1>Welcome to Recipe Collector</h1>
-                    <h1>Login</h1>
+                    <h1 id='signupTitle'>Login</h1>
                     <LoginForm {...this.props} login={this.props.login} />
                     {this.props.isLoggedIn? this.props.history.push('/') : null}
                     {!this.props.isCorrectUser? <h2>Incorrect user credentials, please try again</h2>: null}

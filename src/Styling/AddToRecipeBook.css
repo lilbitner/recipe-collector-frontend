@@ -32,9 +32,29 @@
 
 #pickFile {
     height: 100%;
-    width: 70%;
+    width: 99%;
     font-family: 'Gotu', sans-serif;
     background-color: white;
+}
+
+#imageUpload {
+    width: 100%;
+}
+
+#recipeCategory {
+    width: 62%;
+}
+
+#recipeUrl {
+    width: 61%;
+}
+
+#recipeSubmit {
+    width: 63%;
+}
+
+h1 {
+    text-align: center;
 }
 
 

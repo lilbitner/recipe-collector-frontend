@@ -1,7 +1,7 @@
 .nav {
     background-color: #0f4c81;
     border: solid;
-    height: 4rem;
+    height: 5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -12,17 +12,18 @@
     font-size: xx-large;
     color: #ffa372;
     font-family: 'Gotu', sans-serif;
+    text-decoration: none;
     /* padding-right: 10%; */
-    padding-right: 3%;
+    padding-right: 6%;
 }
 
 #logout {
     text-decoration: none;
     color: #ffa372;
     font-family: 'Gotu', sans-serif;
-    border: solid;
+    /* border: solid;
     border-color: #1b262c;
-    border-radius: 10%;
+    border-radius: 10%; */
     box-shadow: 0px 0px 8px whitesmoke;
     padding-left: 1%;
     padding-right: 1%;
