@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   createUser = (user) => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://recipe-collector-capstone.herokuapp.com/users", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -47,7 +47,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('mount')
     if(localStorage.token){
-      fetch(`http://localhost:5000/users/authenticate`, {
+      fetch(`https://recipe-collector-capstone.herokuapp.com/authenticate`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${localStorage.token}`
@@ -57,7 +57,7 @@ class App extends React.Component {
       .then(result => this.setState({user: result.user}))
     }
     if(localStorage.token){
-    fetch(`http://localhost:5000/recipes/${localStorage.user_id}`, {
+    fetch(`https://recipe-collector-capstone.herokuapp.com/recipes/${localStorage.user_id}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${localStorage.token}`
@@ -71,7 +71,7 @@ class App extends React.Component {
   }
 
   login = (user) => {
-   fetch("http://localhost:5000/users/login", {
+   fetch("https://recipe-collector-capstone.herokuapp.com/users/login", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -93,7 +93,7 @@ class App extends React.Component {
   addRecipe = (recipe) => {
     console.log('recipe', recipe)
     
-    fetch('http://localhost:5000/recipes', {
+    fetch('https://recipe-collector-capstone.herokuapp.com/recipes', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -110,7 +110,7 @@ class App extends React.Component {
   }
 
   deleteRecipe = (id) => {
-    fetch(`http://localhost:5000/recipes/delete/${id}`, {
+    fetch(`https://recipe-collector-capstone.herokuapp.com/recipes/delete/${id}`, {
     method: 'DELETE'
     }).then(response => response.json())
     .then(response => {

@@ -34,7 +34,8 @@ export default class RecipeBook extends React.Component {
 
    updatesState = (id) => {
         this.setState({
-            filteredRecipes: this.state.filteredRecipes.filter(recipe => recipe.id !== id)
+            searchedArray: this.state.searchedArray.filter(recipe => recipe.id !== id),
+            filteredRecipes: this.state.filteredRecipes.filter(recipe =>recipe.id !== id )
             // Appetizers: this.state.Appetizers.filter(recipe => recipe.id !== id), 
             // Entreés: this.state.Entreés.filter(recipe => recipe.id !== id), 
             // Desserts: this.state.Desserts.filter(recipe => recipe.id !== id), 
