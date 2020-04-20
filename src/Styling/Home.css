@@ -35,3 +35,192 @@
     justify-content: space-evenly;
     padding-top: 2rem;
 }
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+    }
+    
+    #uploadButton, #viewButton, #notesButton {
+        font-family: 'Gotu', sans-serif;
+        font-weight: 800;
+        height: 8vh;
+        width: 25%;
+        border: solid;
+        border-width: thick;
+        border-color: #1b262c;
+        box-shadow: 0px 0px 8px gray;
+    }
+    
+    #uploadButton:hover, #viewButton:hover, #notesButton:hover {
+        box-shadow: 0px 8px 16px gray; 
+    }
+    
+    #uploadImage, #viewImage, #notesImage {
+        width: 30vw;
+        height: 40vh;
+        box-shadow: 0px 0px 8px gray ;
+    
+    }
+    
+    #uploadImage:hover, #viewImage:hover, #notesImage:hover {
+        box-shadow: 0px 8px 16px gray ;
+    }
+    
+    .imageContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+    }
+    
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 5rem;
+    }
+    
+    #uploadButton, #viewButton, #notesButton {
+        font-family: 'Gotu', sans-serif;
+        font-weight: 800;
+        height: 8vh;
+        width: 25%;
+        border: solid;
+        border-width: thick;
+        border-color: #1b262c;
+        box-shadow: 0px 0px 8px gray;
+    }
+    
+    #uploadButton:hover, #viewButton:hover, #notesButton:hover {
+        box-shadow: 0px 8px 16px gray; 
+    }
+    
+    #uploadImage, #viewImage, #notesImage {
+        width: 30vw;
+        height: 20vh;
+        box-shadow: 0px 0px 8px gray ;
+    
+    }
+    
+    #uploadImage:hover, #viewImage:hover, #notesImage:hover {
+        box-shadow: 0px 8px 16px gray ;
+    }
+    
+    .imageContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 3rem;
+    }
+    
+}
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+    
+    #uploadButton, #viewButton, #notesButton {
+        font-family: 'Gotu', sans-serif;
+        font-weight: 800;
+        font-size: xx-small;
+        height: 8vh;
+        width: 25%;
+        border: solid;
+        border-width: thick;
+        border-color: #1b262c;
+        box-shadow: 0px 0px 8px gray;
+    }
+    
+    #uploadButton:hover, #viewButton:hover, #notesButton:hover {
+        box-shadow: 0px 8px 16px gray; 
+    }
+    
+    #uploadImage, #viewImage, #notesImage {
+        width: 30vw;
+        height: 10vh;
+        box-shadow: 0px 0px 8px gray ;
+    
+    }
+    
+    #uploadImage:hover, #viewImage:hover, #notesImage:hover {
+        box-shadow: 0px 8px 16px gray ;
+    }
+    
+    .imageContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 1rem;
+    }
+    
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .buttonContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+    
+    #uploadButton, #viewButton, #notesButton {
+        font-family: 'Gotu', sans-serif;
+        font-weight: 800;
+        font-size: xx-small;
+        height: 8vh;
+        width: 25%;
+        border: solid;
+        border-width: thick;
+        border-color: #1b262c;
+        box-shadow: 0px 0px 8px gray;
+    }
+    
+    #uploadButton:hover, #viewButton:hover, #notesButton:hover {
+        box-shadow: 0px 8px 16px gray; 
+    }
+    
+    #uploadImage, #viewImage, #notesImage {
+        width: 30vw;
+        height: 30vh;
+        box-shadow: 0px 0px 8px gray ;
+    
+    }
+    
+    #uploadImage:hover, #viewImage:hover, #notesImage:hover {
+        box-shadow: 0px 8px 16px gray ;
+    }
+    
+    .imageContainer {
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2rem;
+        margin-top: 1rem;
+    }
+    
+}
