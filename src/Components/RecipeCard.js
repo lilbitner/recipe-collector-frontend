@@ -1,7 +1,6 @@
 import React from 'react'
 import '../Styling/RecipeCard.css'
 import {Link} from 'react-router-dom'
-// import Zoom from 'react-img-zoom'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
