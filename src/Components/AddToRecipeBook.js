@@ -36,6 +36,7 @@ export default class AddToRecipeBook extends React.Component {
 
     handleRefresh = () => {
         return window.location.href = window.location.href
+        this.props.componentDidMount()
     }
 
 
