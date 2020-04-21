@@ -32,7 +32,6 @@ class App extends React.Component {
     }).then(response => {
       if (response.status === 201) 
       {
-        // localStorage.setItem('userId', response.id)
         this.setState({isUser: true})
       } 
       if (response.status === 401) 
@@ -123,25 +122,19 @@ class App extends React.Component {
 }
 
 
-
-
   render() {
 
     return (
       <div className="App">
         <Switch> 
           <PrivateRoute exact user={this.state.user} path='/' />
-          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/signup' render={(props) => <SignUp {...props} 
             isUser={this.state.isUser} isPasswordShort = {this.state.isPasswordShort} 
             isCreatedUser={this.state.isCreatedUser} createUser={this.createUser}/>}
           /> 
-          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
           <Route path='/login' render={(props)=> <Login {...props} 
             isLoggedIn={this.state.isLoggedIn} isCorrectUser={this.state.isCorrectUser} login={this.login} />}
           />
-          {/* <Route render={() => <Redirect to='/signup'/>}/> */}
-          {/* <Route path='/' render={(props) => <Home user={this.state.user} {...props}/>}/> */}
           <Route path='/book' render={(props) => <RecipeBook recipes={this.state.recipes} 
             user={this.state.user} {...props} deleteRecipe={this.deleteRecipe}/>}
           />  

@@ -45,7 +45,7 @@ export default class AddToRecipeBook extends React.Component {
         return(
             <>
             <Nav user={this.props.user} />
-            <h1>AddToRecipeBook</h1>
+            <h1 id='add'>AddToRecipeBook</h1>
             <div className='allUploadInputs'> 
                 <h3 id='pickWhatYouWant'> Pick and choose what you would like to add</h3>
                 <Upload addImage={this.addImage} />

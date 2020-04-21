@@ -14,8 +14,6 @@ export default class Home extends React.Component{
         image3: 'https://images.unsplash.com/photo-1516824711718-9c1e683412ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     }
 
-
-    
     
     render() {
         return(
