@@ -46,7 +46,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('mount')
     if(localStorage.token){
-      fetch(`https://recipe-collector-capstone.herokuapp.com/authenticate`, {
+      fetch(`https://recipe-collector-capstone.herokuapp.com/users/authenticate`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${localStorage.token}`
@@ -139,7 +139,7 @@ class App extends React.Component {
             user={this.state.user} {...props} deleteRecipe={this.deleteRecipe}/>}
           />  
           <Route path='/notes' render={(props) => <RecipeNotes user={this.state.user} {...props} />}/>  
-          <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} 
+          <Route path='/add' render={(props) => <AddToRecipeBook addRecipe={this.addRecipe} componentDidMount={this.componentDidMount}
             user={this.state.user} isRecipeCreated={this.state.isRecipeCreated} {...props} />}
           />  
           <Route render={() => <Redirect to='/signup'/>}/>
